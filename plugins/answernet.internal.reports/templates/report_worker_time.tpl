@@ -24,6 +24,8 @@
 | <a href="javascript:;" onclick="document.getElementById('start').value='-1 week';document.getElementById('end').value='now';document.getElementById('btnSubmit').click();">{$translate->_('timetracking.ui.reports.filters.1_week')|lower}</a>
 | <a href="javascript:;" onclick="document.getElementById('start').value='-1 day';document.getElementById('end').value='now';document.getElementById('btnSubmit').click();">{$translate->_('timetracking.ui.reports.filters.1_day')|lower}</a>
 | <a href="javascript:;" onclick="document.getElementById('start').value='today';document.getElementById('end').value='now';document.getElementById('btnSubmit').click();">{$translate->_('common.today')|lower}</a>
+| <a href="javascript:;" onclick="document.getElementById('start').value='-2 weeks Monday';document.getElementById('end').value='Last Monday';document.getElementById('btnSubmit').click();">{$translate->_('reports.ui.group.answernet.worker.time.last')|lower}</a>
+| <a href="javascript:;" onclick="document.getElementById('start').value='Last Monday';document.getElementById('end').value='now';document.getElementById('btnSubmit').click();">{$translate->_('reports.ui.group.answernet.worker.time.this')|lower}</a>
 <br>
 {$translate->_('answernet.ui.reports.type')} <select name="report_type">
 	<option value="0">{$translate->_('answernet.ui.reports.type.summary')}</option>
@@ -46,7 +48,7 @@
 
 
 <script language="javascript" type="text/javascript">
-{literal}	
+{literal}
 YAHOO.util.Event.addListener(window,'load',function(e) {
 	document.getElementById('btnSubmit').click();
 });
