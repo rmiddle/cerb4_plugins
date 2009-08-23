@@ -1,0 +1,9 @@
+.tmp*
+.htaccess
+.settings/*
+*~
+*.orig
+git-create-branch-github.sh
+git-create-branch-origin.sh
+framework.config.php
+.project
