@@ -1,0 +1,149 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+	<id>answernet.reports</id>
+	<name>Answernet: Reports</name>
+	<description>Reports created by Answernet</description>
+	<author>Robert Middleswarth</author>
+	<revision>1</revision>
+	<link>http://www.answernet.com/</link>
+	<class>
+		<file>api/App.php</file>
+		<name>AnswernetReportsPlugin</name>
+	</class>
+	
+	<acl>
+		<priv id="reports.group.answernet" label="acl.reports.group.answernet" />
+		<priv id="reports.group.answernet.time" label="acl.reports.group.answernet.time" />
+	</acl>
+
+	<extensions>
+		<extension point="devblocks.i18n.strings">
+			<id>answernet.translations</id>
+			<name>Answernet Translation Strings</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetTranslations</name>
+			</class>
+			<params>
+			</params>
+		</extension>
+		
+		<extension point="cerberusweb.report.group">
+			<id>report.group.answernet</id>
+			<name>Answernet Custom Reports</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportGroups</name>
+			</class>
+			<params>
+				<param key="group_name" value="reports.ui.group.answernet" />
+				<param key="acl" value="reports.group.answernet" />
+			</params>
+		</extension>
+	
+		<extension point="cerberusweb.report.group">
+			<id>report.group.answernet.time</id>
+			<name>Answernet Time Tracker Reports</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportGroupsTime</name>
+			</class>
+			<params>
+				<param key="group_name" value="reports.ui.group.answernet.time" />
+				<param key="acl" value="reports.group.answernet.time" />
+			</params>
+		</extension>
+		
+		<extension point="cerberusweb.report">
+			<id>report.group.answernet.stats</id>
+			<name>Answernet Reports for the helpdesk</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportWorkers</name>
+			</class>
+			<params>
+				<param key="report_name" value="reports.ui.group.answernet.stats" />
+				<param key="report_group" value="report.group.answernet" />
+			</params>
+		</extension>
+
+		<extension point="cerberusweb.report">
+			<id>report.group.answernet.asset.time</id>
+			<name>Answernet Reports for the Assets by Time</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportAssetTime</name>
+			</class>
+			<params>
+				<param key="report_name" value="reports.ui.group.answernet.asset.time" />
+				<param key="report_group" value="report.group.answernet.time" />
+			</params>
+		</extension>
+		
+		<extension point="cerberusweb.report">
+			<id>report.group.answernet.client.time</id>
+			<name>Answernet Reports for the Client by Time</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportClientTime</name>
+			</class>
+			<params>
+				<param key="report_name" value="reports.ui.group.answernet.client.time" />
+				<param key="report_group" value="report.group.answernet.time" />
+			</params>
+		</extension>
+		
+		<extension point="cerberusweb.report">
+			<id>report.group.answernet.sitename.time</id>
+			<name>Answernet Reports for each Site Name by Time</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportSiteNameTime</name>
+			</class>
+			<params>
+				<param key="report_name" value="reports.ui.group.answernet.sitename.time" />
+				<param key="report_group" value="report.group.answernet.time" />
+			</params>
+		</extension>
+		
+		<extension point="cerberusweb.report">
+			<id>report.group.answernet.ticket.time</id>
+			<name>Answernet Reports for the Ticket by Time</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportTicketTime</name>
+			</class>
+			<params>
+				<param key="report_name" value="reports.ui.group.answernet.ticket.time" />
+				<param key="report_group" value="report.group.answernet.time" />
+			</params>
+		</extension>
+		
+		<extension point="cerberusweb.report">
+			<id>report.group.answernet.worker.time</id>
+			<name>Answernet Reports for the Worker by Time</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportWorkerTime</name>
+			</class>
+			<params>
+				<param key="report_name" value="reports.ui.group.answernet.worker.time" />
+				<param key="report_group" value="report.group.answernet.time" />
+			</params>
+		</extension>
+		
+		<extension point="cerberusweb.report">
+			<id>report.group.answernet.plus1.time</id>
+			<name>Answernet Reports for the Plus 1 by Time</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetReportPlus1Time</name>
+			</class>
+			<params>
+				<param key="report_name" value="reports.ui.group.answernet.plus1.time" />
+				<param key="report_group" value="report.group.answernet.time" />
+			</params>
+		</extension>
+	</extensions>
+	
+</plugin>

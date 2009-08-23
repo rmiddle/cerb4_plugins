@@ -1,0 +1,26 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+	<id>wgm.header_filters</id>
+	<name>WGM Custom Dev: Header to Custom Field Filters</name>
+	<description>Allows you to use mail filters to set Custom Fields based on the value of a specified header.</description>
+	<author>WebGroup Media, LLC.</author>
+	<revision>0</revision>
+	<link>http://wiki.cerb4.com/wiki/Plugin:Header_Filters</link>
+	<class>
+		<file>plugin.php</file>
+		<name>HeaderFilterPlugin</name>
+	</class>
+ 
+	<extensions>
+		<extension point="cerberusweb.mail_filter.action">
+			<id>wgm.header_filters.action.copy</id>
+			<name>Action: Copy Header Value to Custom Field</name>
+			<class>
+				<file>plugin.php</file>
+				<name>HeaderFilterCopyAction</name>
+			</class>
+			<params/>
+		</extension>
+	</extensions>
+</plugin>
+

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.0">
+	<header datatype="winres" segtype="sentence" adminlang="en-us"
+		srclang="en-us" o-tmf="abc" />
+	<body>
+
+		<!-- ACL -->
+
+		<tu tuid='acl.reports.group.answernet'>
+			<tuv xml:lang="en_US"><seg>[Report Group] Can view the 'Answernet Reports' group</seg></tuv>
+		</tu>
+
+		<tu tuid='acl.reports.group.answernet.time'>
+			<tuv xml:lang="en_US"><seg>[Report Group] Can view the 'Answernet Time Tracker Reports' group</seg></tuv>
+		</tu>
+
+		<!-- Answernet Reports -->
+
+		<tu tuid='reports.ui.group.answernet'>
+			<tuv xml:lang="en_US"><seg>Answernet Reports</seg></tuv>
+		</tu>
+		<tu tuid='reports.ui.group.answernet.stats'>
+			<tuv xml:lang="en_US"><seg>Answernet Stats</seg></tuv>
+		</tu>
+
+		<!-- Answernet Time Tracking Reports -->
+
+		<tu tuid='reports.ui.group.answernet.time'>
+			<tuv xml:lang="en_US"><seg>Answernet Time Tracking Reports</seg></tuv>
+		</tu>
+		<tu tuid='reports.ui.group.answernet.asset.time'>
+			<tuv xml:lang="en_US"><seg>Answernet Assets by Time Report</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.group.answernet.asset.time.assest'>
+			<tuv xml:lang="en_US"><seg>Assets: </seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.group.answernet.asset.time.assest.all_assest'>
+			<tuv xml:lang="en_US"><seg>All Assets</seg></tuv>
+		</tu>
+		<tu tuid='reports.ui.group.answernet.client.time'>
+			<tuv xml:lang="en_US"><seg>Answernet Client by Time Report</seg></tuv>
+		</tu>
+		<tu tuid='reports.ui.group.answernet.sitename.time'>
+			<tuv xml:lang="en_US"><seg>Answernet Site by Time Report</seg></tuv>
+		</tu>
+		<tu tuid='reports.ui.group.answernet.worker.time'>
+			<tuv xml:lang="en_US"><seg>Answernet Worker by Time Report</seg></tuv>
+		</tu>
+    <tu tuid='reports.ui.group.answernet.worker.time.last'>
+      <tuv xml:lang="en_US"><seg>Last Week</seg></tuv>
+    </tu>
+    <tu tuid='reports.ui.group.answernet.worker.time.this'>
+      <tuv xml:lang="en_US"><seg>This Week Week</seg></tuv>
+    </tu>
+		<tu tuid='reports.ui.group.answernet.plus1.time'>
+			<tuv xml:lang="en_US"><seg>Answernet Plus One Report</seg></tuv>
+		</tu>
+		<tu tuid='reports.ui.group.answernet.ticket.time'>
+			<tuv xml:lang="en_US"><seg>Answernet Tickets by Time Report</seg></tuv>
+		</tu>
+    <tu tuid='reports.ui.group.answernet.ticket.invalid_date'>
+			<tuv xml:lang="en_US"><seg>Invalid date</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.group.answernet.ticket.5_year'>
+			<tuv xml:lang="en_US"><seg>5 Year</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.type'>
+			<tuv xml:lang="en_US"><seg>Report Type</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.type.detail'>
+			<tuv xml:lang="en_US"><seg>Detailed</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.type.summary'>
+			<tuv xml:lang="en_US"><seg>Summary</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.type.subgroup'>
+			<tuv xml:lang="en_US"><seg>Sub-Totals</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.total'>
+			<tuv xml:lang="en_US"><seg>Total:</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.notes'>
+			<tuv xml:lang="en_US"><seg>Notes:</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.download.csv'>
+			<tuv xml:lang="en_US"><seg>Download as a CSV file</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.reports.subtotal'>
+			<tuv xml:lang="en_US"><seg>Sub-Total for</seg></tuv>
+		</tu>
+		<tu tuid='answernet.ui.group.answernet.ticket.all_group'>
+			<tuv xml:lang="en_US"><seg>All Groups</seg></tuv>
+		</tu>
+	</body>
+</tmx>
+<!--
+
+-->
