@@ -2,11 +2,6 @@
 
 require_once 'Spreadsheet/Excel/Writer.php';
 
-class EmailResponseReportsPlugin extends DevblocksPlugin {
-	function load(DevblocksPluginManifest $manifest) {
-	}
-};
-
 if (class_exists('DevblocksTranslationsExtension',true)):
 	class EmailResponseTranslations extends DevblocksTranslationsExtension {
 		function __construct($manifest) {
