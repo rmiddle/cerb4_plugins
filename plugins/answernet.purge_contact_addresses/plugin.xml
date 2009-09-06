@@ -1,0 +1,46 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+  <id>answernet.purge_contact_addresses</id>
+  <name>[Answernet.com] Purge Contact Addresses</name>
+  <description>Purge contact addresses that are no longer connected to any tickets</description>
+  <author>Robert Middleswarth</author>
+  <revision>3</revision>
+  <link>http://www.answernet.com</link>
+  <class>
+    <file>api/Plugin.php</file>
+    <name>AnswernetPurgeContactAddressesPlugin</name>
+  </class>
+
+<extensions>
+    <!-- Patch Containers  -->
+    <extension point="devblocks.patch.container">
+      <id>answernet.patches</id>
+      <name>[Answernet.com] Purge Contact Addresses Patches</name>
+      <class>
+        <file>api/Patch.php</file>
+        <name>AnswernetPurgeContactAddressesPatchContainer</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+
+    <!-- Event Listeners -->
+    <extension point="devblocks.listener.event">
+      <id>answernet.purge_contact_addresses.listener.core</id>
+      <name>[Answernet.com] Purge Contact Addresses</name>
+      <class>
+        <file>api/App.php</file>
+        <name>AnswernetPurgeContactAddressesEventListener</name>
+      </class>
+      <params>
+        <!-- Event Listener -->
+        <param key="events">
+          <value>
+            <data key="cron.maint" />
+          </value>
+        </param>
+      </params>
+    </extension>
+
+  </extensions>
+</plugin>

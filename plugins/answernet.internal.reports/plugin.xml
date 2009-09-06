@@ -1,10 +1,10 @@
 <!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
 <plugin>
-	<id>answernet.reports</id>
+	<id>answernet.internal.reports</id>
 	<name>Answernet: Reports</name>
 	<description>Reports created by Answernet</description>
 	<author>Robert Middleswarth</author>
-	<revision>1</revision>
+	<revision>2</revision>
 	<link>http://www.answernet.com/</link>
 	<class>
 		<file>api/App.php</file>
@@ -18,7 +18,7 @@
 
 	<extensions>
 		<extension point="devblocks.i18n.strings">
-			<id>answernet.translations</id>
+			<id>answernet.internal.translations</id>
 			<name>Answernet Translation Strings</name>
 			<class>
 				<file>api/App.php</file>

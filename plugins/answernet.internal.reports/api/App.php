@@ -1,5 +1,10 @@
 <?php
 
+class AnswernetReportsPlugin extends DevblocksPlugin {
+	function load(DevblocksPluginManifest $manifest) {
+	}
+};
+
 if (class_exists('DevblocksTranslationsExtension',true)):
 	class AnswernetTranslations extends DevblocksTranslationsExtension {
 		function __construct($manifest) {
@@ -713,7 +718,7 @@ class AnswernetReportWorkerTime extends Extension_Report {
 		$tpl->cache_lifetime = "0";
 		$tpl->assign('path', $this->tpl_path);
 
-		$tpl->assign('start', '-30 days');
+		$tpl->assign('start', 'Last Monday');
 		$tpl->assign('end', 'now');
 
 		$db = DevblocksPlatform::getDatabaseService();
@@ -768,7 +773,7 @@ class AnswernetReportWorkerTime extends Extension_Report {
 		$end_time = 0;
 
 		if (empty($start) && empty($end)) {
-			$start = "-30 days";
+			$start = "Last Monday";
 			$end = "now";
 			$start_time = strtotime($start);
 			$end_time = strtotime($end);
@@ -778,7 +783,7 @@ class AnswernetReportWorkerTime extends Extension_Report {
 		}
 
 		if($start_time === false || $end_time === false) {
-			$start = "-30 days";
+			$start = "Last Monday";
 			$end = "now";
 			$start_time = strtotime($start);
 			$end_time = strtotime($end);

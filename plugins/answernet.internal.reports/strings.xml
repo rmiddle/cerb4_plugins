@@ -10,10 +10,11 @@
 		<tu tuid='acl.reports.group.answernet'>
 			<tuv xml:lang="en_US"><seg>[Report Group] Can view the 'Answernet Reports' group</seg></tuv>
 		</tu>
-		
+
 		<tu tuid='acl.reports.group.answernet.time'>
 			<tuv xml:lang="en_US"><seg>[Report Group] Can view the 'Answernet Time Tracker Reports' group</seg></tuv>
 		</tu>
+
 		<!-- Answernet Reports -->
 
 		<tu tuid='reports.ui.group.answernet'>
@@ -22,9 +23,9 @@
 		<tu tuid='reports.ui.group.answernet.stats'>
 			<tuv xml:lang="en_US"><seg>Answernet Stats</seg></tuv>
 		</tu>
-		
+
 		<!-- Answernet Time Tracking Reports -->
-		
+
 		<tu tuid='reports.ui.group.answernet.time'>
 			<tuv xml:lang="en_US"><seg>Answernet Time Tracking Reports</seg></tuv>
 		</tu>
@@ -46,13 +47,19 @@
 		<tu tuid='reports.ui.group.answernet.worker.time'>
 			<tuv xml:lang="en_US"><seg>Answernet Worker by Time Report</seg></tuv>
 		</tu>
+    <tu tuid='reports.ui.group.answernet.worker.time.last'>
+      <tuv xml:lang="en_US"><seg>Last Week</seg></tuv>
+    </tu>
+    <tu tuid='reports.ui.group.answernet.worker.time.this'>
+      <tuv xml:lang="en_US"><seg>This Week Week</seg></tuv>
+    </tu>
 		<tu tuid='reports.ui.group.answernet.plus1.time'>
 			<tuv xml:lang="en_US"><seg>Answernet Plus One Report</seg></tuv>
 		</tu>
 		<tu tuid='reports.ui.group.answernet.ticket.time'>
 			<tuv xml:lang="en_US"><seg>Answernet Tickets by Time Report</seg></tuv>
 		</tu>
-		<tu tuid='reports.ui.group.answernet.ticket.invalid_date'>
+    <tu tuid='reports.ui.group.answernet.ticket.invalid_date'>
 			<tuv xml:lang="en_US"><seg>Invalid date</seg></tuv>
 		</tu>
 		<tu tuid='answernet.ui.group.answernet.ticket.5_year'>
@@ -87,6 +94,6 @@
 		</tu>
 	</body>
 </tmx>
-<!-- 
-	
+<!--
+
 -->
