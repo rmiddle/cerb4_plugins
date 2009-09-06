@@ -10,11 +10,6 @@
 		<file>api/App.php</file>
 		<name>AnswernetReportsPlugin</name>
 	</class>
-	
-	<acl>
-		<priv id="reports.group.answernet" label="acl.reports.group.answernet" />
-		<priv id="reports.group.answernet.time" label="acl.reports.group.answernet.time" />
-	</acl>
 
 	<extensions>
 		<extension point="devblocks.i18n.strings">
@@ -27,33 +22,7 @@
 			<params>
 			</params>
 		</extension>
-		
-		<extension point="cerberusweb.report.group">
-			<id>report.group.answernet</id>
-			<name>Answernet Custom Reports</name>
-			<class>
-				<file>api/App.php</file>
-				<name>AnswernetReportGroups</name>
-			</class>
-			<params>
-				<param key="group_name" value="reports.ui.group.answernet" />
-				<param key="acl" value="reports.group.answernet" />
-			</params>
-		</extension>
-	
-		<extension point="cerberusweb.report.group">
-			<id>report.group.answernet.time</id>
-			<name>Answernet Time Tracker Reports</name>
-			<class>
-				<file>api/App.php</file>
-				<name>AnswernetReportGroupsTime</name>
-			</class>
-			<params>
-				<param key="group_name" value="reports.ui.group.answernet.time" />
-				<param key="acl" value="reports.group.answernet.time" />
-			</params>
-		</extension>
-		
+
 		<extension point="cerberusweb.report">
 			<id>report.group.answernet.stats</id>
 			<name>Answernet Reports for the helpdesk</name>
@@ -79,7 +48,7 @@
 				<param key="report_group" value="report.group.answernet.time" />
 			</params>
 		</extension>
-		
+
 		<extension point="cerberusweb.report">
 			<id>report.group.answernet.client.time</id>
 			<name>Answernet Reports for the Client by Time</name>
@@ -92,7 +61,7 @@
 				<param key="report_group" value="report.group.answernet.time" />
 			</params>
 		</extension>
-		
+
 		<extension point="cerberusweb.report">
 			<id>report.group.answernet.sitename.time</id>
 			<name>Answernet Reports for each Site Name by Time</name>
@@ -105,7 +74,7 @@
 				<param key="report_group" value="report.group.answernet.time" />
 			</params>
 		</extension>
-		
+
 		<extension point="cerberusweb.report">
 			<id>report.group.answernet.ticket.time</id>
 			<name>Answernet Reports for the Ticket by Time</name>
@@ -118,7 +87,7 @@
 				<param key="report_group" value="report.group.answernet.time" />
 			</params>
 		</extension>
-		
+
 		<extension point="cerberusweb.report">
 			<id>report.group.answernet.worker.time</id>
 			<name>Answernet Reports for the Worker by Time</name>
@@ -131,7 +100,7 @@
 				<param key="report_group" value="report.group.answernet.time" />
 			</params>
 		</extension>
-		
+
 		<extension point="cerberusweb.report">
 			<id>report.group.answernet.plus1.time</id>
 			<name>Answernet Reports for the Plus 1 by Time</name>
@@ -145,5 +114,5 @@
 			</params>
 		</extension>
 	</extensions>
-	
+
 </plugin>
