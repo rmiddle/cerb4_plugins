@@ -26,9 +26,11 @@ class AnswernetPurgeContactAddressesEventListener extends DevblocksEventListener
               $sql .= "FROM address a ";
               $sql .= "LEFT JOIN message m ON a.id = m.address_id ";
               $sql .= "LEFT JOIN requester r ON a.id = r.address_id ";
+              $sql .= "LEFT JOIN ticket_comment tc ON a.id = tc.address_id ";
               $sql .= "WHERE a.contact_org_id = 0 ";
               $sql .= "AND m.address_id IS NULL ";
               $sql .= "AND r.address_id IS NULL ";
+              $sql .= "AND tc.address_id IS NULL ";
               $sql .= "ORDER BY a.id ASC ";
               $rs = $db->Execute($sql);
               while(!$rs->EOF) {
