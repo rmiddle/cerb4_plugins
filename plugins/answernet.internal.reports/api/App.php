@@ -1,12 +1,12 @@
 <?php
 
-class AnswernetReportsPlugin extends DevblocksPlugin {
+class AnswernetInternalReportPlugin extends DevblocksPlugin {
 	function load(DevblocksPluginManifest $manifest) {
 	}
 };
 
 if (class_exists('DevblocksTranslationsExtension',true)):
-	class AnswernetTranslations extends DevblocksTranslationsExtension {
+	class AnswernetInternalTranslations extends DevblocksTranslationsExtension {
 		function __construct($manifest) {
 			parent::__construct($manifest);
 		}
@@ -17,19 +17,19 @@ if (class_exists('DevblocksTranslationsExtension',true)):
 	};
 endif;
 
-class AnswernetReportGroups extends Extension_ReportGroup {
+class AnswernetInternalReportGroups extends Extension_ReportGroup {
 	function __construct($manifest) {
 		parent::__construct($manifest);
 	}
 };
 
-class AnswernetReportGroupsTime extends Extension_ReportGroup {
+class AnswernetInternalReportGroupsTime extends Extension_ReportGroup {
 	function __construct($manifest) {
 		parent::__construct($manifest);
 	}
 };
 
-class AnswernetReportWorkers extends Extension_Report {
+class AnswernetInternalReportWorkers extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -218,7 +218,7 @@ class AnswernetReportWorkers extends Extension_Report {
 };
 
 if (class_exists('Extension_Report',true)):
-class AnswernetReportAssetTime extends Extension_Report {
+class AnswernetInternalReportAssetTime extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -413,7 +413,7 @@ class AnswernetReportAssetTime extends Extension_Report {
 endif;
 
 if (class_exists('Extension_Report',true)):
-class AnswernetReportClientTime extends Extension_Report {
+class AnswernetInternalReportClientTime extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -509,7 +509,7 @@ class AnswernetReportClientTime extends Extension_Report {
 endif;
 
 if (class_exists('Extension_Report',true)):
-class AnswernetReportSiteNameTime extends Extension_Report {
+class AnswernetInternalReportSiteNameTime extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -605,7 +605,7 @@ class AnswernetReportSiteNameTime extends Extension_Report {
 endif;
 
 if (class_exists('Extension_Report',true)):
-class AnswernetReportTicketTime extends Extension_Report {
+class AnswernetInternalReportTicketTime extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -705,7 +705,7 @@ class AnswernetReportTicketTime extends Extension_Report {
 endif;
 
 if (class_exists('Extension_Report',true)):
-class AnswernetReportWorkerTime extends Extension_Report {
+class AnswernetInternalReportWorkerTime extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -961,7 +961,7 @@ class AnswernetReportWorkerTime extends Extension_Report {
 };
 endif;
 if (class_exists('Extension_Report',true)):
-class AnswernetReportPlus1Time extends Extension_Report {
+class AnswernetInternalReportPlus1Time extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {

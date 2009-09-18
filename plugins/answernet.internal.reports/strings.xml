@@ -7,12 +7,8 @@
 
 		<!-- ACL -->
 
-		<tu tuid='acl.reports.group.answernet'>
-			<tuv xml:lang="en_US"><seg>[Report Group] Can view the 'Answernet Reports' group</seg></tuv>
-		</tu>
-
-		<tu tuid='acl.reports.group.answernet.time'>
-			<tuv xml:lang="en_US"><seg>[Report Group] Can view the 'Answernet Time Tracker Reports' group</seg></tuv>
+		<tu tuid='acl.answernet.reports.group.worker'>
+			<tuv xml:lang="en_US"><seg>[Report Group] Can view the 'Answernet Reports' worker group</seg></tuv>
 		</tu>
 
 		<!-- Answernet Reports -->
