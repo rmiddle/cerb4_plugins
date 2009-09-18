@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+	<header datatype="winres" segtype="sentence" adminlang="en-us"
+		srclang="en-us" o-tmf="abc" />
+	<body>
+    <!-- Generic Text -->
+    <tu tuid='answernet.last_action_and_audit_log.success'>
+      <tuv xml:lang="en_US"><seg>Saved Successfully</seg></tuv>
+    </tu>
+
+    <!-- Choice of Update Option inside the config -->
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.default'>
+      <tuv xml:lang="en_US"><seg>Do Nothing (default).</seg></tuv>
+    </tu>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.update'>
+      <tuv xml:lang="en_US"><seg>Modify the timestamp in ticket Updated field.</seg></tuv>
+    </tu>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.custom.field'>
+      <tuv xml:lang="en_US"><seg>Update a custom ticket field with a timestamp.</seg></tuv>
+    </tu>
+    <!-- Title Section -->
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.comment'>
+      <tuv xml:lang="en_US"><seg>Comments</seg></tuv>
+    </tu>
+    <!-- Choice of Audit Log Option inside the config -->
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.comment.audit'>
+      <tuv xml:lang="en_US"><seg>Enable Audit Log:</seg></tuv>
+    </tu>
+    <!-- Choice of Last Action Option inside the config -->
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.comment.last_action'>
+      <tuv xml:lang="en_US"><seg>When posted: </seg></tuv>
+    </tu>
+
+    <!-- Text for Audit Log Types -->
+    <tu tuid='answernet.last_action_and_audit_log.type.comment'>
+      <tuv xml:lang="en_US"><seg>Comment Posted</seg></tuv>
+    </tu>
+
+    <!-- Error -->
+    <tu tuid='answernet.last_action_and_audit_log.error.enable'>
+      <tuv xml:lang="en_US"><seg>You must enable "[Answernet.com] Utililty Functions" in order to use this Plug-in.</seg></tuv>
+    </tu>
+
+</body>
+</tmx>
+<!--
+@joe did you think my question to Hildy@WGM was going to be easy.
+-->

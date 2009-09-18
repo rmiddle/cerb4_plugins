@@ -1,0 +1,75 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+	<id>answernet.last_action_and_audit_log</id>
+	<name>[Answernet.com] Last Action and Audit Log Fixes</name>
+	<description></description>
+	<author>Robert Middleswarth</author>
+	<revision>7</revision>
+	<link>http://www.answernet.com</link>
+	<class>
+		<file>api/Plugin.php</file>
+		<name>AnswernetLastActionAndAuditLogPlugin</name>
+	</class>
+
+	<extensions>
+    <!-- Patch Containers  -->
+    <extension point="devblocks.patch.container">
+      <id>answernet.patches</id>
+      <name>[Answernet.com] Last Action and Audit Log Patches</name>
+      <class>
+        <file>api/Patch.php</file>
+        <name>AnswernetLastActionAndAuditLogPatchContainer</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+
+		<!-- Translations -->
+		<extension point="devblocks.i18n.strings">
+			<id>answernet.last_action_and_audit_log.translations</id>
+			<name>[Answernet.com] Last Action and Audit Log Strings</name>
+			<class>
+				<file>api/Plugin.php</file>
+				<name>AnswernetLastActionAndAuditLogTranslations</name>
+			</class>
+			<params>
+			</params>
+		</extension>
+
+		<!-- Event Listeners -->
+		<extension point="devblocks.listener.event">
+			<id>answernet.last_action_and_audit_log.listeners</id>
+			<name>[Answernet.com] Last Action and Audit Log Listener</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetLastActionAndAuditLogEventListener</name>
+			</class>
+      <params>
+				<param key="events">
+					<value>
+						<data key="ticket.comment.create" />
+						<data key="ticket.property.pre_change" />
+						<data key="ticket.reply.inbound" />
+						<data key="ticket.reply.outbound" />
+            <data key="ticket.merge" />
+					</value>
+				</param>
+			</params>
+		</extension>
+
+		<!-- Config Tabs -->
+		<extension point="cerberusweb.config.tab">
+			<id>answernet.last_action_and_audit_log.config.tab</id>
+			<name>[Answernet.com] Last Action and Audit Log Tab</name>
+			<class>
+				<file>api/App.php</file>
+				<name>AnswernetLastActionAndAuditLogConfigTab</name>
+			</class>
+			<params>
+				<param key="uri" value="answernet_action_log" />
+				<param key="title" value="Answernet Action Log" />
+			</params>
+		</extension>
+
+	</extensions>
+</plugin>
