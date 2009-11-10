@@ -19,7 +19,8 @@
 				<file>app/app.php</file>
 				<name>AnswernetMetlifeFilterCopyAction</name>
 			</class>
-			<params/>
+      <params>
+      </params>
 		</extension>
 	</extensions>
 </plugin>
