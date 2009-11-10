@@ -17,6 +17,9 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $logger = DevblocksPlatform::getConsoleLog();
     $logger->info("Answernet: Running Filter on New Mail");
     $logger->info(print_r($message_headers->subject));
+    echo "Answernet: Running Filter on New Mail<br>";
+    print_r($message_headers->subject);
+    echo "<br>";
 //    $logger->info(print_r($filter));
 //    $logger->info(print_r($ticket_fields));
 

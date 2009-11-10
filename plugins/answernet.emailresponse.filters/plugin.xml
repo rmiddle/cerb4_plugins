@@ -1,7 +1,7 @@
 <!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
 <plugin>
 	<id>answernet.emailresponse.filters</id>
-	<name>[Answernet]: Email Respone Custom Filters for Metlife</name>
+	<name>[Answernet.com]: Email Respone Custom Filters for Metlife</name>
 	<description>Metlife filters to pull custom data from the subject and body of an email into custom fields</description>
 	<author>Robert Middleswarth</author>
 	<revision>0</revision>
