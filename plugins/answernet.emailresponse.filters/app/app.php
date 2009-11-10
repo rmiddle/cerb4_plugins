@@ -16,9 +16,9 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $logger = DevblocksPlatform::getConsoleLog();
     $logger->info(print_r($message));
     $logger->info(print_r($filter));
+    $logger->info(print_r($ticket_fields));
 
     // Houser,Colin <1034179><Missing Serviced Customer information>
-
 
 				// collapse multi-line headers to single line for single-line text fields
 				//if($ticket_fields[$custom_fields[$idx]]->type == Model_CustomField::TYPE_SINGLE_LINE) {
