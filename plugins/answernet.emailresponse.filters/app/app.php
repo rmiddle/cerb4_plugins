@@ -11,6 +11,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 
 	function run(Model_PreParseRule $filter, CerberusParserMessage $message) {
     $message_headers = $message->headers;
+    $subject = $message['headers']['subject']
 		$ticket_fields = DAO_CustomField::getAll();
 		$params = $filter->actions[self::EXTENSION_ID];
 
@@ -18,7 +19,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 //    $logger->info("Answernet: Running Filter on New Mail");
 //    $logger->info(print_r($message_headers->subject));
     echo "Answernet: Running Filter on New Mail<br>";
-    print_r($message_headers);
+    echo $subject;
     echo "<br>";
 //    $logger->info(print_r($filter));
 //    $logger->info(print_r($ticket_fields));
