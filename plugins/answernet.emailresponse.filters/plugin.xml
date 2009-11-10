@@ -5,7 +5,7 @@
 	<description>Metlife filters to pull custom data from the subject and body of an email into custom fields</description>
 	<author>Robert Middleswarth</author>
 	<revision>0</revision>
-	<link>http://answernet.com//link>
+	<link>http://answernet.com//<link>
 	<class>
 		<file>app/app.php</file>
 		<name>AnswernetMetlifeFilterPlugin</name>
