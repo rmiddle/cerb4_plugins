@@ -30,7 +30,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     // 8 = Due Date
     // 9 = SLA
     // 
-    print_r($subject)
+    print_r($subject);
     $sub = explode(',', $subject, 2);
     print_r($sub);
     $lname = $sub[0];
