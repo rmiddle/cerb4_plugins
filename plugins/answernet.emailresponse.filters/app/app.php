@@ -37,7 +37,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $emp_id = $sub2[1];
     $type_custom = $sub2[2];
     $message->custom_fields['1'] = trim($fname) . trim($lname);
-    $message->custom_fields['3'] = (int)$emp_id);
+//    $message->custom_fields['3'] = (int)$emp_id);
     $message->body .= "emp_id = " . $emp_id;
     $message->body .= "type = " . $type_custom;
     $message->body .= "fname = " . $fname;
