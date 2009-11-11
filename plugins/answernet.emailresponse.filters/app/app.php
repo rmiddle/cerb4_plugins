@@ -11,7 +11,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 
 	function run(Model_PreParseRule $filter, CerberusParserMessage $message) {
     $message_headers = $message->headers;
-    $subject = $message->headers['subject'];
+    $subject = DevblocksPlatform::parseCrlfString($message->headers['subject']);
 		$ticket_fields = DAO_CustomField::getAll();
 		$params = $filter->actions[self::EXTENSION_ID];
 
@@ -22,7 +22,24 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 //    $logger->info(print_r($ticket_fields));
 
     // Houser,Colin <1034179><Missing Serviced Customer information>
-    $message->custom_fields[1] = $subject;
+    // Current custom_fields numbers
+    // 1 = RM Name
+    // 2 = New Hire Yes = 0 / No = 2
+    // 3 = RM Employee ID
+    // 6 = Request Type /0/2/4/6/8/10/12/14
+    // 8 = Due Date
+    // 9 = SLA
+    // 
+    $sub = explode(',', $subject, 2);
+    $lname = $sub[0];
+    $sub2 = explode('<', $sub[1]]);
+    $fname = $sub2[0];
+    $emp_id = $sub2[1];
+    $type = $sub2[2];
+    $message->custom_fields['1'] = trim($fname) . trim($lname);
+    $message->custom_fields['3'] = (int)$emp_id);
+    $message->body .= "type = " . $type;
+
 				// collapse multi-line headers to single line for single-line text fields
 				//if($ticket_fields[$custom_fields[$idx]]->type == Model_CustomField::TYPE_SINGLE_LINE) {
 				//	$message->custom_fields[$custom_fields[$idx]]
