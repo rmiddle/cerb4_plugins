@@ -36,13 +36,10 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $fname = $sub2[0];
     $emp_id = $sub2[1];
     $type_custom = $sub2[2];
-    $message->custom_fields['1'] = trim($fname) . trim($lname);
-//    $message->custom_fields['3'] = (int)$emp_id);
-    $message->body .= "emp_id = " . $emp_id;
-    $message->body .= "type = " . $type_custom;
-    $message->body .= "fname = " . $fname;
-    $message->body .= "lname = " . $lname;
-
+    $message->custom_fields['1'] = trim($fname) . " " . trim($lname);
+    $message->custom_fields['3'] = substr($emp_id, 0, -1);
+    $message->body .= "emp_id = " . substr($emp_id, 0, -1);
+    $message->body .= "type = " . substr($type_custom, 0, -1);
 	}
 
 	// function renderConfig(Model_PreParseRule $filter=null) {}
