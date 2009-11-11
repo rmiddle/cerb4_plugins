@@ -32,7 +32,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     // 
     $sub = explode(',', $subject, 2);
     $lname = $sub[0];
-    $sub2 = explode('<', $sub[1]]);
+    $sub2 = explode("<", $sub[1]);
     $fname = $sub2[0];
     $emp_id = $sub2[1];
     $type_custom = $sub2[2];
