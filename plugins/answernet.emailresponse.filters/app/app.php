@@ -36,7 +36,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $lname = $sub[0];
     print_r($lname);
     $sub2 = explode("<", $sub[1]);
-    print_r($sub2)
+    print_r($sub2);
     $fname = $sub2[0];
     print_r($fname);
     $emp_id = $sub2[1];
