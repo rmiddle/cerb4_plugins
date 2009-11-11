@@ -30,19 +30,19 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     // 8 = Due Date
     // 9 = SLA
     // 
-    print_r($subject);
+    $message->body .= print_r($subject);
     $sub = explode(',', $subject, 2);
-    print_r($sub);
+    $message->body .= print_r($sub);
     $lname = $sub[0];
-    print_r($lname);
+    $message->body .= print_r($lname);
     $sub2 = explode("<", $sub[1]);
-    print_r($sub2);
+    $message->body .= print_r($sub2);
     $fname = $sub2[0];
-    print_r($fname);
+    $message->body .= print_r($fname);
     $emp_id = $sub2[1];
-    print_r($emp_id);
+    $message->body .= print_r($emp_id);
     $type_custom = $sub2[2];
-    print_r($type_custom);
+    $message->body .= print_r($type_custom);
 //    $message->custom_fields['1'] = trim($fname) . trim($lname);
 //    $message->custom_fields['3'] = (int)$emp_id);
 //    $message->body .= "emp_id = " . $emp_id;
