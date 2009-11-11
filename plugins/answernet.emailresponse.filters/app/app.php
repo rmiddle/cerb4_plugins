@@ -40,6 +40,10 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 //    $message->custom_fields['3'] = (int)$emp_id);
     $message->body .= "emp_id = " . $emp_id;
     $message->body .= "type = " . $type_custom;
+    $message->body .= "fname = " . $fname;
+    $message->body .= "lname = " . $lname;
+    $message->body .= "sub = " . $sub;
+    $message->body .= "sub2 = " . $sub2;
 
 				// collapse multi-line headers to single line for single-line text fields
 				//if($ticket_fields[$custom_fields[$idx]]->type == Model_CustomField::TYPE_SINGLE_LINE) {
