@@ -1,0 +1,68 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+	<id>answernet.emailresponse.filters</id>
+	<name>[Answernet.com]: Email Respone Custom Filters for Metlife</name>
+	<description>Metlife filters to pull custom data from the subject and body of an email into custom fields</description>
+	<author>Robert Middleswarth</author>
+	<revision>0</revision>
+	<link>http://answernet.com/</link>
+	<class>
+		<file>app/plugin.php</file>
+		<name>AnswernetMetlifePlugin</name>
+	</class>
+
+  <acl>
+    <priv id="reports.group.emailresponse.answernet" label="acl.reports.group.emailresponse.answernet" />
+  </acl>
+
+  <extensions>
+    <extension point="devblocks.i18n.strings">
+      <id>emailresponse.translations</id>
+      <name>Email Response Translation Strings</name>
+      <class>
+        <file>api/plugin.php</file>
+        <name>EmailResponseTranslations</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+    
+		<extension point="cerberusweb.mail_filter.action">
+			<id>answernet.metlife_filters.action.copy</id>
+			<name>Action: Copy Values from Metlife forms to Custom Field</name>
+			<class>
+				<file>app/filter.php</file>
+				<name>AnswernetMetlifeFilterCopyAction</name>
+			</class>
+      <params>
+      </params>
+		</extension>
+    
+    <extension point="cerberusweb.report.group">
+      <id>report.group.emailresponse.answernet</id>
+      <name>Email Response Custom Reports</name>
+      <class>
+        <file>api/report.php</file>
+        <name>EmailResponseReportGroups</name>
+      </class>
+      <params>
+        <param key="group_name" value="reports.ui.group.emailresponse.answernet" />
+        <param key="acl" value="reports.group.emailresponse.answernet" />
+      </params>
+    </extension>
+  
+    <extension point="cerberusweb.report">
+      <id>report.group.emailresponse.answernet.metlife</id>
+      <name>Email Response Metlife Reports for the helpdesk</name>
+      <class>
+        <file>api/report.php</file>
+        <name>EmailResponseReportMetLife</name>
+      </class>
+      <params>
+        <param key="report_name" value="reports.ui.group.emailresponse.answernet.metlife" />
+        <param key="report_group" value="report.group.emailresponse.answernet" />
+      </params>
+    </extension>
+	</extensions>
+</plugin>
+
