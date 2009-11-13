@@ -1,8 +1,8 @@
 <!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
 <plugin>
 	<id>answernet.emailresponse.metlife</id>
-	<name>[Answernet.com]: Email Respone Custom Biz Logic for Metlife</name>
-	<description>Plugin that implents buness logic for the Metlife Account</description>
+	<name>[Answernet.com]: Email Respone Custom Business Logic for Metlife</name>
+	<description>Plugin that implents business logic for the Metlife Account</description>
 	<author>Robert Middleswarth</author>
 	<revision>1</revision>
 	<link>http://answernet.com/</link>
