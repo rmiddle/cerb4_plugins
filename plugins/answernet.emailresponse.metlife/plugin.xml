@@ -1,10 +1,10 @@
 <!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
 <plugin>
 	<id>answernet.emailresponse.filters</id>
-	<name>[Answernet.com]: Email Respone Custom Filters for Metlife</name>
-	<description>Metlife filters to pull custom data from the subject and body of an email into custom fields</description>
+	<name>[Answernet.com]: Email Respone Custom Biz Logic for Metlife</name>
+	<description>Plugin that implents buness logic for the Metlife Account</description>
 	<author>Robert Middleswarth</author>
-	<revision>0</revision>
+	<revision>1</revision>
 	<link>http://answernet.com/</link>
 	<class>
 		<file>app/plugin.php</file>
