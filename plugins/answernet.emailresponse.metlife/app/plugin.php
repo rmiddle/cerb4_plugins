@@ -1,5 +1,5 @@
 class AnswernetMetlifePlugin extends DevblocksPlugin {
-  function load(DevblocksPluginManifest $manifest) {
+//  function load(DevblocksPluginManifest $manifest) {
   }
 };
 
