@@ -59,7 +59,7 @@
         <name>MetlifeReportGroupReport1</name>
       </class>
       <params>
-        <param key="report_name" value="reports.group.emailresponse.metlife" />
+        <param key="report_name" value="reports.group.emailresponse.metlife.report1" />
         <param key="report_group" value="report.group.emailresponse.metlife" />
       </params>
     </extension>
