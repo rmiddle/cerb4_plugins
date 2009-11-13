@@ -2,14 +2,14 @@
 
 require_once 'Spreadsheet/Excel/Writer.php';
 
-class EmailResponseReportGroups extends Extension_ReportGroup {
+class MetlifeReportGroup extends Extension_ReportGroup {
 	function __construct($manifest) {
 		parent::__construct($manifest);
 	}
 };
 
 if (class_exists('Extension_Report',true)):
-class MetlifeReportGroup extends Extension_Report {
+class MetlifeReportGroupReport1 extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -44,7 +44,7 @@ class MetlifeReportGroup extends Extension_Report {
 		$tpl->display('file:' . $this->tpl_path . '/report_metlife.tpl');
 	}
 
-	function getEmailResponseReportMetLifeAction() {
+	function MetlifeReportGroupReport1Action() {
 		$db = DevblocksPlatform::getDatabaseService();
 		$translate = DevblocksPlatform::getTranslationService();
     $url = DevblocksPlatform::getUrlService();

@@ -8,8 +8,8 @@
 <form action="{devblocks_url}{/devblocks_url}" method="POST" id="frmRange" name="frmRange" onsubmit="return false;">
 <input type="hidden" name="c" value="reports">
 <input type="hidden" name="a" value="action">
-<input type="hidden" name="extid" value="report.group.emailresponse.metlife">
-<input type="hidden" name="extid_a" id="extid_a" value="getEmailResponseReportMetLife">
+<input type="hidden" name="extid" value="report.group.emailresponse.metlife.report1">
+<input type="hidden" name="extid_a" id="extid_a" value="MetlifeReportGroupReport1">
 
 <div id="divCal" style="display:none;position:absolute;z-index:1;"></div>
 <br>

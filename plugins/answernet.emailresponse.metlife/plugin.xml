@@ -52,11 +52,11 @@
     </extension>
   
     <extension point="cerberusweb.report">
-      <id>report.group.emailresponse.metlife</id>
+      <id>report.group.emailresponse.metlife.report1</id>
       <name>Metlife Reports for the Email Response</name>
       <class>
         <file>api/report.php</file>
-        <name>EmailResponseReportMetLife</name>
+        <name>MetlifeReportGroupReport1</name>
       </class>
       <params>
         <param key="report_name" value="reports.group.emailresponse.metlife" />
