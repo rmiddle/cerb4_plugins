@@ -21,7 +21,7 @@
       <name>Email Response Metlife Translation Strings</name>
       <class>
         <file>api/plugin.php</file>
-        <name>MetlifeTranslations</name>
+        <name>ERMetlifeTranslations</name>
       </class>
       <params>
       </params>
