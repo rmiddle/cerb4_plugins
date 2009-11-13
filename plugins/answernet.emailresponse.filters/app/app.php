@@ -26,7 +26,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     // 1 = Due Date
     // 2 = RM Employee ID
     // 3 = RM Name
-    // 4 = Request Type /0/2/4/6/8/10/12/14
+    // 4 = Topic_metlife /0/2/4/6/8/10/12/14
     // 5 = SLA
     // 6 = New Hire Yes = 0 / No = 2
     // 
@@ -35,11 +35,22 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $sub2 = explode("<", $sub[1]);
     $fname = $sub2[0];
     $emp_id = $sub2[1];
-    $type_custom = $sub2[2];
+    $topic_metlife = $sub2[2];
     $message->custom_fields['2'] = substr($emp_id, 0, -1);
     $message->custom_fields['3'] = trim($fname) . " " . trim($lname);
-   
-//    $message->body .= "type = " . substr($type_custom, 0, -1);
+
+    // If topic == Other
+    if (preg_match('/Other/i', $topic_metlife)) {
+      $message->custom_fields['4'] = "Other";
+      $message->custom_fields['5'] = 5;
+      $message->custom_fields['6'] = "No";
+    }
+
+    // SLA of 5.  Process day of week Busness Days suck.
+    if ($message->custom_fields['5'] == 5) {
+      $message->custom_fields['1'] = date();
+    }
+//    $message->body .= "type = " . substr($topic_metlife, 0, -1);
 	}
 
 	// function renderConfig(Model_PreParseRule $filter=null) {}
