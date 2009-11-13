@@ -14,6 +14,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $subject = $message->headers['subject'];
 		$ticket_fields = DAO_CustomField::getAll();
 		$params = $filter->actions[self::EXTENSION_ID];
+    $day_of_week = date('N');
 
     $logger = DevblocksPlatform::getConsoleLog();
     $logger->info("Answernet: Running Filter on New Mail");
@@ -48,10 +49,25 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 
     // SLA of 5.  Process day of week Busness Days suck.
     if ($message->custom_fields['5'] == 5) {
-//      $message->custom_fields['1'] = date();
+      if (($day_of_week == 1) || ($day_of_week == 7)) {
+        $message->custom_fields['1'] = strtotime("+5 Days");
+      }
+      if ($day_of_week == 6) {
+        $message->custom_fields['1'] = strtotime("+6 Days");
+      }
+      if (($day_of_week > 1) && ($day_of_week < 6)) {
+        $message->custom_fields['1'] = strtotime("+7 Days");
+      }
     }
-//    $message->body .= "type = " . substr($topic_metlife, 0, -1);
 	}
+
+// $date_var = strtotime("Last Monday");
+// for ($i = 1; $i <= 10; $i++) {
+//   $week_choices[$i]['time'] = $date_var;
+//   $week_choices[$i]['text'] = "Week of ".date("W: n/j/y", $date_var).'
+//- '.date("n/j/y", $date_var+518400);
+//      $date_var -= 604800;
+//    }
 
 	// function renderConfig(Model_PreParseRule $filter=null) {}
 
