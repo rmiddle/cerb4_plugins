@@ -4,7 +4,7 @@ class AnswernetMetlifePlugin extends DevblocksPlugin {
 };
 
 if (class_exists('DevblocksTranslationsExtension',true)):
-  class EmailResponseTranslations extends DevblocksTranslationsExtension {
+  class MetlifeTranslations extends DevblocksTranslationsExtension {
     function __construct($manifest) {
       parent::__construct($manifest);
     }

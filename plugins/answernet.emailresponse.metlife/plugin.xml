@@ -17,11 +17,11 @@
 
   <extensions>
     <extension point="devblocks.i18n.strings">
-      <id>emailresponse.translations</id>
-      <name>Email Response Translation Strings</name>
+      <id>metlife.translations</id>
+      <name>Email Response Metlife Translation Strings</name>
       <class>
         <file>api/plugin.php</file>
-        <name>EmailResponseTranslations</name>
+        <name>MetlifeTranslations</name>
       </class>
       <params>
       </params>
