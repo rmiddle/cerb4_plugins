@@ -12,7 +12,7 @@
 	</class>
 
   <acl>
-    <priv id="reports.group.emailresponse.answernet" label="acl.reports.group.emailresponse.answernet" />
+    <priv id="reports.group.emailresponse.metlife" label="acl.reports.group.emailresponse.metlife" />
   </acl>
 
   <extensions>
@@ -39,30 +39,29 @@
 		</extension>
     
     <extension point="cerberusweb.report.group">
-      <id>report.group.emailresponse.answernet</id>
-      <name>Email Response Custom Reports</name>
+      <id>report.group.emailresponse.metlife</id>
+      <name>Metlife Custom Reports</name>
       <class>
         <file>api/report.php</file>
-        <name>EmailResponseReportGroups</name>
+        <name>MetlifeReportGroup</name>
       </class>
       <params>
-        <param key="group_name" value="reports.ui.group.emailresponse.answernet" />
-        <param key="acl" value="reports.group.emailresponse.answernet" />
+        <param key="group_name" value="reports.group.emailresponse.metlife" />
+        <param key="acl" value="reports.group.emailresponse.metlife" />
       </params>
     </extension>
   
     <extension point="cerberusweb.report">
-      <id>report.group.emailresponse.answernet.metlife</id>
-      <name>Email Response Metlife Reports for the helpdesk</name>
+      <id>report.group.emailresponse.metlife</id>
+      <name>Metlife Reports for the Email Response</name>
       <class>
         <file>api/report.php</file>
         <name>EmailResponseReportMetLife</name>
       </class>
       <params>
-        <param key="report_name" value="reports.ui.group.emailresponse.answernet.metlife" />
-        <param key="report_group" value="report.group.emailresponse.answernet" />
+        <param key="report_name" value="reports.group.emailresponse.metlife" />
+        <param key="report_group" value="report.group.emailresponse.metlife" />
       </params>
     </extension>
 	</extensions>
 </plugin>
-

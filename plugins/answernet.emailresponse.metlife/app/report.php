@@ -9,7 +9,7 @@ class EmailResponseReportGroups extends Extension_ReportGroup {
 };
 
 if (class_exists('Extension_Report',true)):
-class EmailResponseReportMetLife extends Extension_Report {
+class MetlifeReportGroup extends Extension_Report {
 	private $tpl_path = null;
 
 	function __construct($manifest) {
@@ -69,10 +69,10 @@ class EmailResponseReportMetLife extends Extension_Report {
     }
 
     $end_time = $start_time + 604800;
-    print $translate->_('reports.ui.group.emailresponse.answernet.week.number');
+    print $translate->_('reports.group.emailresponse.metlife.week.number');
     print date("W", $start_time);
     print '<br>';
-    print $translate->_('reports.ui.group.emailresponse.answernet.metlife.generating');
+    print $translate->_('reports.group.emailresponse.metlife.generating');
 
     switch ($group) {
       case "All":
@@ -98,7 +98,7 @@ class EmailResponseReportMetLife extends Extension_Report {
           return;
     }
     print '<br>';
-    print $translate->_('reports.ui.group.emailresponse.answernet.metlife.generating.template');
+    print $translate->_('reports.group.emailresponse.metlife.generating.template');
 
 		$full_filename = getcwd().'/storage/answernet/'.$filename;
     $href_filename = $url->write('storage/answernet/'.$filename, true);
@@ -553,9 +553,9 @@ class EmailResponseReportMetLife extends Extension_Report {
     $worksheet_outbound->write(1, 10, "", $format_outbound_title2);
     $worksheet_outbound->write(1, 11, "", $format_outbound_title2);
 
-    print $translate->_('reports.ui.group.emailresponse.answernet.done');
+    print $translate->_('reports.group.emailresponse.metlife.done');
     print '<br>';
-    print $translate->_('reports.ui.group.emailresponse.answernet.metlife.generating.email.detail');
+    print $translate->_('reports.group.emailresponse.metlife.generating.email.detail');
 
 		$groups = DAO_Group::getAll();
 		$buckets = DAO_Bucket::getAll();
@@ -697,9 +697,9 @@ class EmailResponseReportMetLife extends Extension_Report {
 			$rs->MoveNext();
 		}
 
-    print $translate->_('reports.ui.group.emailresponse.answernet.done');
+    print $translate->_('reports.group.emailresponse.metlife.done');
     print '<br>';
-    print $translate->_('reports.ui.group.emailresponse.answernet.metlife.generating.email.count');
+    print $translate->_('reports.group.emailresponse.metlife.generating.email.count');
 
     $worksheet_in_count->setRow(1, 24);
     $row_count = 2;
@@ -748,12 +748,12 @@ class EmailResponseReportMetLife extends Extension_Report {
     $worksheet_out_count->writeFormula(1, 6, "=SUM(B2,E2)", $format_out_count_grand);
 
     $workbook->close();
-    print $translate->_('reports.ui.group.emailresponse.answernet.done');
+    print $translate->_('reports.group.emailresponse.metlife.done');
     print '<br>';
-    print $translate->_('reports.ui.group.emailresponse.answernet.metlife.generating');
-		print $translate->_('reports.ui.group.emailresponse.answernet.done');
+    print $translate->_('reports.group.emailresponse.metlife.generating');
+		print $translate->_('reports.group.emailresponse.metlife.done');
 		print '<br><br>';
-		print '<b><a href=' . $href_filename . '>' . $translate->_('reports.ui.group.emailresponse.answernet.download.xls') . '</a></b>';
+		print '<b><a href=' . $href_filename . '>' . $translate->_('reports.group.emailresponse.metlife.download.xls') . '</a></b>';
 		print '<br><br>';
 	}
 

@@ -3,12 +3,12 @@
 	</div>
 </div>
 
-<h2>{$translate->_('reports.ui.group.emailresponse.answernet.metlife')}</h2>
+<h2>{$translate->_('reports.group.emailresponse.metlife')}</h2>
 
 <form action="{devblocks_url}{/devblocks_url}" method="POST" id="frmRange" name="frmRange" onsubmit="return false;">
 <input type="hidden" name="c" value="reports">
 <input type="hidden" name="a" value="action">
-<input type="hidden" name="extid" value="report.group.emailresponse.answernet.metlife">
+<input type="hidden" name="extid" value="report.group.emailresponse.metlife">
 <input type="hidden" name="extid_a" id="extid_a" value="getEmailResponseReportMetLife">
 
 <div id="divCal" style="display:none;position:absolute;z-index:1;"></div>
