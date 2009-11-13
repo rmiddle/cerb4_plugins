@@ -48,7 +48,7 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 
     // SLA of 5.  Process day of week Busness Days suck.
     if ($message->custom_fields['5'] == 5) {
-      $message->custom_fields['1'] = date();
+//      $message->custom_fields['1'] = date();
     }
 //    $message->body .= "type = " . substr($topic_metlife, 0, -1);
 	}
