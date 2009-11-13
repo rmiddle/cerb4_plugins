@@ -23,12 +23,12 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
 
     // Houser,Colin <1034179><Missing Serviced Customer information>
     // Current custom_fields numbers
-    // 1 = RM Name
-    // 2 = New Hire Yes = 0 / No = 2
-    // 3 = RM Employee ID
-    // 6 = Request Type /0/2/4/6/8/10/12/14
-    // 8 = Due Date
-    // 9 = SLA
+    // 1 = Due Date
+    // 2 = RM Employee ID
+    // 3 = RM Name
+    // 4 = Request Type /0/2/4/6/8/10/12/14
+    // 5 = SLA
+    // 6 = New Hire Yes = 0 / No = 2
     // 
     $sub = explode(',', $subject, 2);
     $lname = $sub[0];
@@ -36,9 +36,10 @@ class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
     $fname = $sub2[0];
     $emp_id = $sub2[1];
     $type_custom = $sub2[2];
-    $message->custom_fields['1'] = trim($fname) . " " . trim($lname);
-    $message->custom_fields['3'] = substr($emp_id, 0, -1);
-    $message->body .= "type = " . substr($type_custom, 0, -1);
+    $message->custom_fields['2'] = substr($emp_id, 0, -1);
+    $message->custom_fields['3'] = trim($fname) . " " . trim($lname);
+   
+//    $message->body .= "type = " . substr($type_custom, 0, -1);
 	}
 
 	// function renderConfig(Model_PreParseRule $filter=null) {}
