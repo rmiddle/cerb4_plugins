@@ -1,10 +1,10 @@
 <!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
 <plugin>
-	<id>answernet.emailresponse.metlife</id>
-	<name>[Answernet.com]: Email Respone Custom Business Logic for Metlife</name>
+	<id>answernet.er.metlife</id>
+	<name>[Answernet.com]: Custom Business Logic for Metlife</name>
 	<description>Plugin that implents business logic for the Metlife Account</description>
 	<author>Robert Middleswarth</author>
-	<revision>1</revision>
+	<revision>2</revision>
 	<link>http://answernet.com/</link>
 	<class>
 		<file>app/plugin.php</file>
@@ -12,55 +12,55 @@
 	</class>
 
   <acl>
-    <priv id="reports.group.emailresponse.metlife" label="acl.reports.group.emailresponse.metlife" />
+    <priv id="answernet.er.metlife.report.acl" label="answernet.er.metlife.report.acl.text" />
   </acl>
 
   <extensions>
     <extension point="devblocks.i18n.strings">
-      <id>metlife.translations</id>
-      <name>Email Response Metlife Translation Strings</name>
+      <id>answernet.er.metlife.id.translations</id>
+      <name>Answernet Email Response Metlife Translation Strings</name>
       <class>
         <file>api/plugin.php</file>
-        <name>ERMetlifeTranslations</name>
+        <name>AnswernetMetlifeTranslations</name>
       </class>
       <params>
       </params>
     </extension>
     
 		<extension point="cerberusweb.mail_filter.action">
-			<id>answernet.metlife_filters.action.copy</id>
+			<id>answernet.er.metlife.id.filter.action.copy</id>
 			<name>Action: Copy Values from Metlife forms to Custom Field</name>
 			<class>
 				<file>app/filter.php</file>
-				<name>AnswernetMetlifeFilterCopyAction</name>
+				<name>AnswernetMetlifeFilterActionCopy</name>
 			</class>
       <params>
       </params>
 		</extension>
     
     <extension point="cerberusweb.report.group">
-      <id>report.group.emailresponse.metlife</id>
+      <id>answernet.er.metlife.id.report.group</id>
       <name>Metlife Custom Reports</name>
       <class>
         <file>api/report.php</file>
-        <name>MetlifeReportGroup</name>
+        <name>AnswernetMetlifeReportGroup</name>
       </class>
       <params>
-        <param key="group_name" value="reports.group.emailresponse.metlife" />
-        <param key="acl" value="reports.group.emailresponse.metlife" />
+        <param key="group_name" value="answernet.er.metlife.report.group" />
+        <param key="acl" value="answernet.er.metlife.report.acl" />
       </params>
     </extension>
   
     <extension point="cerberusweb.report">
-      <id>report.group.emailresponse.metlife.report1</id>
+      <id>answernet.er.metlife.id.report1</id>
       <name>Metlife Reports for the Email Response</name>
       <class>
         <file>api/report.php</file>
-        <name>MetlifeReportGroupReport1</name>
+        <name>AnswernetMetlifeReportGroupReport1</name>
       </class>
       <params>
-        <param key="report_name" value="reports.group.emailresponse.metlife.report1" />
-        <param key="report_group" value="report.group.emailresponse.metlife" />
+        <param key="report_name" value="answernet.er.metlife.report1.text" />
+        <param key="report_group" value="answernet.er.metlife.id.report.group" />
       </params>
     </extension>
 	</extensions>

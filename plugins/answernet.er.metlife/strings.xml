@@ -7,49 +7,49 @@
 
 		<!-- ACL -->
 
-		<tu tuid='acl.reports.group.emailresponse.metlife'>
+		<tu tuid='answernet.er.metlife.report.acl.text'>
 			<tuv xml:lang="en_US"><seg>[Report Group] Can view the Metlife Reports</seg></tuv>
 		</tu>
 
 		<!-- Email Response Answernet Reports -->
 
-		<tu tuid='reports.group.emailresponse.metlife'>
+		<tu tuid='answernet.er.metlife.report1.text'>
 			<tuv xml:lang="en_US"><seg>Answernet Metlife Reports</seg></tuv>
 		</tu>
 
-    <tu tuid='reports.group.emailresponse.metlife.generate.report'>
+    <tu tuid='answernet.er.metlife.generate.report'>
       <tuv xml:lang="en_US"><seg>Generate Report</seg></tuv>
     </tu>
 
-		<tu tuid='reports.group.emailresponse.metlife.download.xls'>
+		<tu tuid='answernet.er.metlife.download.xls'>
 			<tuv xml:lang="en_US"><seg>Click here to download the Excel file</seg></tuv>
 		</tu>
 
-		<tu tuid='reports.group.emailresponse.metlife.week.number'>
+		<tu tuid='answernet.er.metlife.week.number'>
 			<tuv xml:lang="en_US"><seg>Week Number:</seg></tuv>
 		</tu>
 
-		<tu tuid='reports.group.emailresponse.metlife.done'>
+		<tu tuid='answernet.er.metlife.metlife.done'>
 			<tuv xml:lang="en_US"><seg>Done.</seg></tuv>
 		</tu>
 
 		<!-- Email Response Metlife Reports -->
 
-		<tu tuid='reports.group.emailresponse.metlife.report1'>
+		<tu tuid='answernet.er.metlife.report1'>
 			<tuv xml:lang="en_US"><seg>MetLife Answernet Report One</seg></tuv>
 		</tu>
 
-		<tu tuid='reports.group.emailresponse.metlife.generating'>
+		<tu tuid='answernet.er.metlife.generating'>
 			<tuv xml:lang="en_US"><seg>Generating Metlife Report: </seg></tuv>
 		</tu>
 
-    <tu tuid='reports.group.emailresponse.metlife.generating.template'>
+    <tu tuid='answernet.er.metlife.generating.template'>
       <tuv xml:lang="en_US"><seg>Generating Metlife Excel Template: </seg></tuv>
     </tu>
-    <tu tuid='reports.group.emailresponse.metlife.generating.email.detail'>
+    <tu tuid='answernet.er.metlife.generating.email.detail'>
       <tuv xml:lang="en_US"><seg>Generating Metlife Email Details: </seg></tuv>
     </tu>
-    <tu tuid='reports.group.emailresponse.metlife.generating.email.count'>
+    <tu tuid='answernet.er.metlife.generating.email.count'>
       <tuv xml:lang="en_US"><seg>Generating Metlife Email Counts: </seg></tuv>
     </tu>
 	</body>

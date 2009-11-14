@@ -1,6 +1,6 @@
 <?php
 
-class AnswernetMetlifeFilterCopyAction extends Extension_MailFilterAction {
+class AnswernetMetlifeFilterActionCopy extends Extension_MailFilterAction {
 	const EXTENSION_ID = 'answernet.metlife_filters.action.copy';
 
 	function __construct($manifest) {

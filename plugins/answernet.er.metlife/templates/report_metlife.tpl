@@ -3,13 +3,13 @@
 	</div>
 </div>
 
-<h2>{$translate->_('reports.group.emailresponse.metlife')}</h2>
+<h2>{$translate->_('answernet.er.metlife.report1.text')}</h2>
 
 <form action="{devblocks_url}{/devblocks_url}" method="POST" id="frmRange" name="frmRange" onsubmit="return false;">
 <input type="hidden" name="c" value="reports">
 <input type="hidden" name="a" value="action">
-<input type="hidden" name="extid" value="report.group.emailresponse.metlife.report1">
-<input type="hidden" name="extid_a" id="extid_a" value="MetlifeReportGroupReport1">
+<input type="hidden" name="extid" value="answernet.er.metlife.id.report1">
+<input type="hidden" name="extid_a" id="extid_a" value="AnswernetMetlifeReportGroupReport1">
 
 <div id="divCal" style="display:none;position:absolute;z-index:1;"></div>
 <br>
@@ -31,7 +31,7 @@
         {/foreach}
       </select></td>
 </tr>
-<button type="button" id="btnSubmit" onclick="genericAjaxPost('frmRange', 'report');">{$translate->_('reports.ui.group.emailresponse.answernet.generate.report')|capitalize}</button>
+<button type="button" id="btnSubmit" onclick="genericAjaxPost('frmRange', 'report');">{$translate->_('answernet.er.metlife.generate.report')|capitalize}</button>
 </form>
 
 {*<div id="myContainer" style="width:100%;height:0;background-color:rgb(255,255,255);"></div>*}
