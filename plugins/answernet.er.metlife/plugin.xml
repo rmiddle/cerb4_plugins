@@ -55,7 +55,7 @@
       <id>answernet.er.metlife.id.report1</id>
       <name>Metlife Reports for the Email Response</name>
       <class>
-        <file>app/metlife/report1.php</file>
+        <file>app/report1.php</file>
         <name>AnswernetMetlifeReportGroupReport1</name>
       </class>
       <params>
@@ -68,7 +68,7 @@
       <id>answernet.er.metlife.id.report.dr</id>
       <name>Metlife Reports for the Email Response (Testing)</name>
       <class>
-        <file>app/metlife/report_dr.php</file>
+        <file>app/report_dr.php</file>
         <name>AnswernetMetlifeReportGroupReportDR</name>
       </class>
       <params>
