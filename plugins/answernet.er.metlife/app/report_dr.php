@@ -175,7 +175,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 
 		$groups = DAO_Group::getAll();
 		$buckets = DAO_Bucket::getAll();
-
+/*
     $sql = "SELECT t.mask, a.email, m.address_id, a.contact_org_id, ";
     $sql .= "t.created_date ticket_created_date, t.team_id, ";
     $sql .= "m.created_date message_created_date, mc.content, ";
@@ -362,11 +362,11 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     // Grand Total
     $worksheet_out_count->write(1, 5, 'Grand Total Email', $format_general);
     $worksheet_out_count->writeFormula(1, 6, "=SUM(B2,E2)", $format_general);
-
+*/
     $workbook->close();
     print $translate->_('answernet.er.metlife.metlife.done');
     print '<br>';
-    print $translate->_('ranswernet.er.metlife.generating');
+    print $translate->_('answernet.er.metlife.generating');
 		print $translate->_('answernet.er.metlife.metlife.done');
 		print '<br><br>';
 		print '<b><a href=' . $href_filename . '>' . $translate->_('answernet.er.metlife.download.xls') . '</a></b>';
