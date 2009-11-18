@@ -2,12 +2,6 @@
 
 require_once 'Spreadsheet/Excel/Writer.php';
 
-class AnswernetMetlifeReportGroup extends Extension_ReportGroup {
-	function __construct($manifest) {
-		parent::__construct($manifest);
-	}
-};
-
 if (class_exists('Extension_Report',true)):
 class AnswernetMetlifeReportGroupReport1 extends Extension_Report {
 	private $tpl_path = null;

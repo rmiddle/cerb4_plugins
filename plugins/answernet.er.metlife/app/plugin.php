@@ -1,3 +1,5 @@
+<?php
+
 class AnswernetMetlifePlugin extends DevblocksPlugin {
   function load(DevblocksPluginManifest $manifest) {
   }
@@ -14,4 +16,10 @@ if (class_exists('DevblocksTranslationsExtension',true)):
     }
   };
 endif;
+
+class AnswernetMetlifeReportGroup extends Extension_ReportGroup {
+  function __construct($manifest) {
+    parent::__construct($manifest);
+  }
+};
 

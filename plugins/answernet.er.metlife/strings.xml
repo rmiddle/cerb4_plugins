@@ -14,8 +14,12 @@
 		<!-- Email Response Answernet Reports -->
 
 		<tu tuid='answernet.er.metlife.report1.text'>
-			<tuv xml:lang="en_US"><seg>Answernet Metlife Reports</seg></tuv>
+			<tuv xml:lang="en_US"><seg>Answernet Metlife Report #1</seg></tuv>
 		</tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.text'>
+      <tuv xml:lang="en_US"><seg>Answernet Metlife DR Report (Testing)</seg></tuv>
+    </tu>
 
     <tu tuid='answernet.er.metlife.generate.report'>
       <tuv xml:lang="en_US"><seg>Generate Report</seg></tuv>

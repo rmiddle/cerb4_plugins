@@ -20,7 +20,7 @@
       <id>answernet.er.metlife.id.translations</id>
       <name>Answernet Email Response Metlife Translation Strings</name>
       <class>
-        <file>api/plugin.php</file>
+        <file>app/plugin.php</file>
         <name>AnswernetMetlifeTranslations</name>
       </class>
       <params>
@@ -42,7 +42,7 @@
       <id>answernet.er.metlife.id.report.group</id>
       <name>Metlife Custom Reports</name>
       <class>
-        <file>api/report.php</file>
+        <file>app/plugin.php</file>
         <name>AnswernetMetlifeReportGroup</name>
       </class>
       <params>
@@ -55,11 +55,24 @@
       <id>answernet.er.metlife.id.report1</id>
       <name>Metlife Reports for the Email Response</name>
       <class>
-        <file>api/report.php</file>
+        <file>app/metlife/report1.php</file>
         <name>AnswernetMetlifeReportGroupReport1</name>
       </class>
       <params>
         <param key="report_name" value="answernet.er.metlife.report1.text" />
+        <param key="report_group" value="answernet.er.metlife.id.report.group" />
+      </params>
+    </extension>
+
+    <extension point="cerberusweb.report">
+      <id>answernet.er.metlife.id.report.dr</id>
+      <name>Metlife Reports for the Email Response (Testing)</name>
+      <class>
+        <file>app/metlife/report_dr.php</file>
+        <name>AnswernetMetlifeReportGroupReportDR</name>
+      </class>
+      <params>
+        <param key="report_name" value="answernet.er.metlife.report.dr.text" />
         <param key="report_group" value="answernet.er.metlife.id.report.group" />
       </params>
     </extension>
