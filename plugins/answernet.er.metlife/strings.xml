@@ -11,7 +11,7 @@
 			<tuv xml:lang="en_US"><seg>[Report Group] Can view the Metlife Reports</seg></tuv>
 		</tu>
 
-		<!-- Email Response Answernet Reports -->
+		<!-- Email Response MetLife Reports -->
 
 		<tu tuid='answernet.er.metlife.report1.text'>
 			<tuv xml:lang="en_US"><seg>Answernet Metlife Report #1</seg></tuv>
@@ -19,6 +19,10 @@
 
     <tu tuid='answernet.er.metlife.report.dr.text'>
       <tuv xml:lang="en_US"><seg>Answernet Metlife DR Report (Testing)</seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.daily.text'>
+      <tuv xml:lang="en_US"><seg>MetLife Daily DR Report Date:</seg></tuv>
     </tu>
 
     <tu tuid='answernet.er.metlife.generate.report'>
@@ -33,11 +37,9 @@
 			<tuv xml:lang="en_US"><seg>Week Number:</seg></tuv>
 		</tu>
 
-		<tu tuid='answernet.er.metlife.metlife.done'>
+    <tu tuid='answernet.er.metlife.metlife.done'>
 			<tuv xml:lang="en_US"><seg>Done.</seg></tuv>
 		</tu>
-
-		<!-- Email Response Metlife Reports -->
 
 		<tu tuid='answernet.er.metlife.report1'>
 			<tuv xml:lang="en_US"><seg>MetLife Answernet Report One</seg></tuv>

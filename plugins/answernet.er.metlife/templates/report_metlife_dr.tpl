@@ -8,29 +8,12 @@
 <form action="{devblocks_url}{/devblocks_url}" method="POST" id="frmRange" name="frmRange" onsubmit="return false;">
 <input type="hidden" name="c" value="reports">
 <input type="hidden" name="a" value="action">
-<input type="hidden" name="extid" value="answernet.er.metlife.id.report1">
-<input type="hidden" name="extid_a" id="extid_a" value="AnswernetMetlifeReportGroupReport1">
+<input type="hidden" name="extid" value="answernet.er.metlife.id.report.dr">
+<input type="hidden" name="extid_a" id="extid_a" value="AnswernetMetlifeReportDR">
 
 <div id="divCal" style="display:none;position:absolute;z-index:1;"></div>
 <br>
-<tr>
-  <td width="0%" nowrap="nowrap">Week Number:</td>
-  <td width="100%"><select name="start">
-    <option value=""></option>
-        {foreach from=$week_choices item=wc key=time}
-          <option value="{$wc.time}">{$wc.text}</option>
-        {/foreach}
-      </select></td>
-</tr>
-<tr>
-  <td width="0%" nowrap="nowrap">Groups:</td>
-  <td width="100%"><select name="group">
-    <option value="All">All Groups</option>
-        {foreach from=$metlife_choices item=mc key=group}
-          <option value="{$mc.group}">{$mc.text}</option>
-        {/foreach}
-      </select></td>
-</tr>
+{$translate->_('answernet.er.metlife.report.dr.daily.text')} <input type="text" name="start" id="start" size="10" value="{$start}"><button type="button" onclick="ajax.getDateChooser('divCal',this.form.start);">&nbsp;<img src="{devblocks_url}c=resource&p=cerberusweb.core&f=images/calendar.gif{/devblocks_url}" align="top">&nbsp;</button>
 <button type="button" id="btnSubmit" onclick="genericAjaxPost('frmRange', 'report');">{$translate->_('answernet.er.metlife.generate.report')|capitalize}</button>
 </form>
 
