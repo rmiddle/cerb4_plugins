@@ -69,105 +69,130 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 
     // Create monthly Tab and set Column Width and Row Hight.
     $worksheet_monthly =& $workbook->addWorksheet('Month DR Summary');
-//    $worksheet_monthly->setColumn(0, 0, $radius*1.71);
-//    $worksheet_monthly->setColumn(0, 0, $radius*.50);
+    $worksheet_monthly->setColumn(0, 0, $radius*2.46);
+    $worksheet_monthly->setColumn(1, 1, $radius*.47);
+    $worksheet_monthly->setColumn(2, 2, $radius*.63);
+    $worksheet_monthly->setColumn(3, 3, $radius*.69);
+    $worksheet_monthly->setColumn(4, 4, $radius*.69);
+    $worksheet_monthly->setColumn(5, 5, $radius*.69);
 //    $worksheet_monthly->setRow(0, 56);
 
     // Create ACD Calls(Inbound) Tab and set Column Width and Row Hight.
-    $worksheet_daily =& $workbook->addWorksheet('Daily Report)');
-    $worksheet_daily->setColumn(0, 1, $radius*0.78);
-    $worksheet_daily->setColumn(2, 2, $radius*1.05);
-    $worksheet_daily->setColumn(3, 3, $radius*1.23);
-    $worksheet_daily->setColumn(4, 4, $radius*1.11);
-    $worksheet_daily->setColumn(5, 5, $radius*1.15);
-    $worksheet_daily->setColumn(6, 6, $radius*2.00);
-    $worksheet_daily->setColumn(7, 7, $radius*0.78);
-    $worksheet_daily->setColumn(8, 8, $radius*2.00);
-    $worksheet_daily->setColumn(9, 9, $radius*0.78);
-    $worksheet_daily->setRow(0, 28);
-    $worksheet_daily->setRow(2, 32);
+    $worksheet_daily =& $workbook->addWorksheet('Daily Report');
+    $worksheet_daily->setColumn(0, 0, $radius*0.70);
+    $worksheet_daily->setColumn(1, 1, $radius*0.85);
+    $worksheet_daily->setColumn(2, 2, $radius*0.35);
+    $worksheet_daily->setColumn(3, 3, $radius*1.00);
+    $worksheet_daily->setColumn(4, 4, $radius*0.82);
+    $worksheet_daily->setColumn(5, 5, $radius*1.16);
+    $worksheet_daily->setColumn(6, 6, $radius*2.40);
+    $worksheet_daily->setColumn(7, 8, $radius*0.87);
+    $worksheet_daily->setColumn(9, 9, $radius*3.28);
+//    $worksheet_daily->setRow(0, 28);
+//    $worksheet_daily->setRow(2, 32);
 
     // Formats used thoughout the workbook.
     $format_general =& $workbook->addFormat();
     $format_general->setBorder(1);
-    $format_general->setHAlign('center');
+    $format_general->setHAlign('left');
     $format_general->setTextWrap();
 
     $format_general_title =& $workbook->addFormat();
     $format_general_title->setBorder(1);
-    $format_general_title->setHAlign('center');
-    $format_general_title->setTextWrap();
+    $format_general_title->setColor('black');
+    $format_general_title->setFgColor('silver');
+    $format_general_title->setHAlign('left');
+    $format_general_title->setVAlign('vjustify');
+    $format_general_title->setVAlign('top');
 
     $format_general_nowrap =& $workbook->addFormat();
     $format_general_nowrap->setBorder(1);
 
     // Setup templating for the formating of certain cells in the Monthly Group.
     $format_monthly_title =& $workbook->addFormat();
+    $format_monthly_title->setColor(8);
+    $format_monthly_title->setFgColor(35);
     $format_monthly_title->setBorder(1);
     $format_monthly_title->setBold();
-    $format_monthly_title->setColor(9);
-    $format_monthly_title->setFgColor(32);
     $format_monthly_title->setHAlign('center');
     $format_monthly_title->setVAlign('vjustify');
-    $format_monthly_title->setVAlign('vcenter');
+    $format_monthly_title->setVAlign('top');
     $format_monthly_title->setTextWrap();
+    $format_monthly_title->setAlign('merge');
 
     // Added headers since they never change in the Metics Group.
-    $worksheet_monthly->write(0, 0, 'Week Range', $format_monthly_title);
-    $worksheet_monthly->write(0, 1, 'Inbnd Field Emails', $format_monthly_title);
-    $worksheet_monthly->write(0, 2, 'Inbnd Admin Emails', $format_monthly_title);
-    $worksheet_monthly->write(0, 3, 'Weekly Total Inbnd', $format_monthly_title);
-    $worksheet_monthly->write(0, 4, 'Outbnd Field Emails', $format_monthly_title);
-    $worksheet_monthly->write(0, 5, 'Outbnd Admin Emails', $format_monthly_title);
-    $worksheet_monthly->write(0, 6, 'Weekly Total Outbnd', $format_monthly_title);
-    $worksheet_monthly->write(0, 7, 'Avg time to respond (hrs)', $format_monthly_title);
-    $worksheet_monthly->write(0, 8, ' ', $format_monthly_title);
-    $worksheet_monthly->write(0, 9, ' ', $format_monthly_title);
-    $worksheet_monthly->write(0, 10, ' ', $format_monthly_title);
-    $worksheet_monthly->write(0, 11, ' ', $format_monthly_title);
-    $worksheet_monthly->write(0, 12, ' ', $format_monthly_title);
-    $worksheet_monthly->write(0, 13, ' ', $format_monthly_title);
-    $worksheet_monthly->write(0, 14, ' ', $format_monthly_title);
-
     $month_text = date("F-y", $start_time);
-    $worksheet_monthly->write(1, 0, $month_text, $format_general);
-    $worksheet_monthly->write(5, 0, 'Grand Total', $format_general);
-    $worksheet_monthly->write(6, 0, 'Weekly Averages', $format_general);
-    $worksheet_monthly->write(7, 0, 'Daily Averages', $format_general);
-    $worksheet_monthly->write(8, 0, '%', $format_general);
+    $worksheet_monthly->write(0, 0, $month_text, $format_monthly_title);
+    $worksheet_monthly->write(0, 1, '', $format_monthly_title);
+    $worksheet_monthly->write(0, 2, '', $format_monthly_title);
+    $worksheet_monthly->write(0, 3, '', $format_monthly_title);
+    $worksheet_monthly->write(0, 4, '', $format_monthly_title);
+    $worksheet_monthly->write(0, 5, '', $format_monthly_title);
 
-    // Added headers since they never change in the acd in Group.
-    $worksheet_daily->write(0, 0, 'MetLife / '.$group_text, $format_general_title);
-    $worksheet_daily->write(0, 1, '', $format_general_title);
-    $worksheet_daily->write(0, 2, '', $format_general_title);
-    $worksheet_daily->write(0, 3, '', $format_general_title);
-    $worksheet_daily->write(0, 4, '', $format_general_title);
-    $worksheet_daily->write(0, 5, '', $format_general_title);
-    $worksheet_daily->write(0, 6, 'WEEKLY TOTALS', $format_general_title);
-    $worksheet_daily->write(0, 7, '', $format_general_title);
-    $worksheet_daily->write(0, 8, '', $format_general_title);
-    $worksheet_daily->write(0, 9, '', $format_general_title);
-    $worksheet_daily->write(1, 0, $week_range_text, $format_general_title);
-    $worksheet_daily->write(1, 1, '', $format_general_title);
-    $worksheet_daily->write(1, 2, '', $format_general_title);
-    $worksheet_daily->write(1, 3, '', $format_general_title);
-    $worksheet_daily->write(1, 4, '', $format_general_title);
-    $worksheet_daily->write(1, 5, '', $format_general_title);
-    $worksheet_daily->write(2, 0, 'Date', $format_general_title3);
-    $worksheet_daily->write(2, 1, 'Call Times', $format_general_title3);
-    $worksheet_daily->write(2, 2, 'Agent Talk', $format_general_title3);
-    $worksheet_daily->write(2, 3, '(MIN.SEC) Hold time', $format_general_title3);
-    $worksheet_daily->write(2, 4, '(MIN.SEC) Patch Time', $format_general_title3);
-    $worksheet_daily->write(2, 5, 'ANI', $format_general_title3);
-    $worksheet_daily->write(1, 6, 'Weekly Total Calls', format_general_title);
-    $worksheet_daily->writeFormula(1, 7, "=count(A1:A1000)", $format_general_title);
-    $worksheet_daily->write(1, 8, 'Weekly Average Patch Time', format_general_title);
-    $worksheet_daily->writeFormula(1, 9, "=SUM(B2,E2)", $format_general_title);
-    $worksheet_daily->write(2, 6, 'Weekly Agent Talk Time', format_general_title);
-    $worksheet_daily->writeFormula(2, 7, "=SUM(B2,E2)", $format_general_title);
-    $worksheet_daily->write(2, 8, 'Weekly Average Hold Time', format_general_title);
-    $worksheet_daily->writeFormula(2, 9, "=SUM(B2,E2)", $format_general_title);
+    $worksheet_monthly->write(1, 0, 'DR Summary', $format_general_title);
+    $worksheet_monthly->write(1, 1, '', $format_general_title);
 
+    $worksheet_monthly->write(2, 0, 'All DRs incoming*', $format_general);
+    $worksheet_monthly->write(3, 0, 'DRs Sent to MetLife', $format_general);
+    $worksheet_monthly->write(4, 0, 'DRs Completed', $format_general);
+    $worksheet_monthly->write(5, 0, 'Average time to reply (day)', $format_general);
+    $worksheet_monthly->write(6, 0, 'Missed DR SLA', $format_general);
+    $worksheet_monthly->write(7, 0, 'DR escalations', $format_general);
+    $worksheet_monthly->write(8, 0, 'DR Unique Users', $format_general);
+    $worksheet_monthly->write(9, 0, 'New Hires (30 Days)', $format_general);
+    $worksheet_monthly->write(10, 0, '', $format_general);
+    $worksheet_monthly->write(10, 1, '', $format_general);
+
+    $worksheet_monthly->write(11, 0, 'DR Categories', $format_general_title);
+    $worksheet_monthly->write(11, 1, '#s', $format_general_title);
+    $worksheet_monthly->write(11, 2, 'Avg SLA', $format_general_title);
+    $worksheet_monthly->write(11, 3, 'Linda #s', $format_general_title);
+    $worksheet_monthly->write(11, 4, 'Colin #s', $format_general_title);
+    $worksheet_monthly->write(11, 5, 'Sarfraz #s', $format_general_title);
+
+    $worksheet_monthly->write(12, 0, 'Import Contacts - New hire', $format_general);
+    $worksheet_monthly->write(13, 0, 'Import Contacts', $format_general);
+    $worksheet_monthly->write(14, 0, 'Create mailing list from exiting date', $format_general);
+    $worksheet_monthly->write(15, 0, 'Update existing contacts - batch', $format_general);
+    $worksheet_monthly->write(16, 0, 'Missing or incorrect customer info', $format_general);
+    $worksheet_monthly->write(17, 0, 'Fix duplicate contacts', $format_general);
+    $worksheet_monthly->write(18, 0, 'Export third party file', $format_general);
+    $worksheet_monthly->write(19, 0, 'Other', $format_general);
+    $worksheet_monthly->write(20, 0, 'Total', $format_general_title);
+    $worksheet_monthly->write(20, 1, '', $format_general_title);
+    $worksheet_monthly->write(20, 2, '', $format_general_title);
+    $worksheet_monthly->write(20, 3, '', $format_general_title);
+    $worksheet_monthly->write(20, 4, '', $format_general_title);
+    $worksheet_monthly->write(20, 5, '', $format_general_title);
+
+    $worksheet_monthly->write(22, 0, '* Some DRs will be deemed normal care and should use other reporting codes, remove from DR reporting', $format_general_nowrap);
+    $worksheet_monthly->write(23, 0, '** Days should be tracked as business days', $format_general_nowrap);
+
+    $worksheet_monthly->write(25, 0, 'SLA Goals', $format_general_title);
+    $worksheet_monthly->write(25, 1, '', $format_general_title);
+
+    $worksheet_monthly->write(26, 0, 'Import Contacts - New hire', $format_general);
+    $worksheet_monthly->write(27, 0, 'Import Contacts', $format_general);
+    $worksheet_monthly->write(28, 0, 'Create mailing list from exiting date', $format_general);
+    $worksheet_monthly->write(29, 0, 'Update existing contacts - batch', $format_general);
+    $worksheet_monthly->write(30, 0, 'Missing or incorrect customer info', $format_general);
+    $worksheet_monthly->write(31, 0, 'Fix duplicate contacts', $format_general);
+    $worksheet_monthly->write(32, 0, 'Export third party file', $format_general);
+    $worksheet_monthly->write(33, 0, 'Other', $format_general);
+    $worksheet_monthly->write(34, 0, 'Avgerage', $format_general_title);
+    $worksheet_monthly->write(34, 1, '', $format_general_title);
+
+// Added headers since they never change in the acd in Group.
+    $worksheet_daily->write(0, 0, 'Status', $format_general_title);
+    $worksheet_daily->write(0, 1, 'Due Date', $format_general_title);
+    $worksheet_daily->write(0, 2, 'SLA', $format_general_title);
+    $worksheet_daily->write(0, 3, 'Date Received', $format_general_title);
+    $worksheet_daily->write(0, 4, 'RM Name', $format_general_title);
+    $worksheet_daily->write(0, 5, 'RM Employee id', $format_general_title);
+    $worksheet_daily->write(0, 6, 'Request Type', $format_general_title);
+    $worksheet_daily->write(0, 7, 'MetLife Staff', $format_general_title);
+    $worksheet_daily->write(0, 8, 'New Hire', $format_general_title);
+    $worksheet_daily->write(0, 9, 'Nates (email body)', $format_general_title);
 
     print $translate->_('answernet.er.metlife.metlife.done');
     print '<br>';
