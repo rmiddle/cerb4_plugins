@@ -209,23 +209,20 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$groups = DAO_Group::getAll();
 		$buckets = DAO_Bucket::getAll();
 
-//SELECT t.id, t.mask, t.is_closed, 
-//t.created_date ticket_created_date, mc.content 
-//FROM message m 
-//INNER JOIN ticket t ON m.ticket_id = t.id 
-//INNER JOIN address a ON m.address_id = a.id 
-//INNER JOIN message_content mc on m.id = mc.message_id 
+//SELECT t.id, t.mask, t.created_date ticket_created_date, mc.content, t.is_closed 
+//FROM ticket t 
+//INNER JOIN message_content mc on t.first_message_id = mc.message_id 
+//INNER JOIN message m on t.first_message_id = m.id 
 //and team_id = 1721
-//ORDER BY m.id
+//ORDER BY t.id
     $sql = "SELECT t.id, t.mask, t.is_closed, ";
     $sql .= "t.created_date ticket_created_date, mc.content ";
-    $sql .= "FROM message m ";
-    $sql .= "INNER JOIN ticket t ON m.ticket_id = t.id ";
-    $sql .= "INNER JOIN address a ON m.address_id = a.id ";
+    $sql .= "FROM ticket t ";
+    $sql .= "INNER JOIN message_content mc on t.first_message_id = mc.message_id ";
     $sql .= "INNER JOIN message_content mc on m.id = mc.message_id ";
     $sql .= sprintf("WHERE m.created_date > %d AND m.created_date <= %d ", $start_ofday, $end_ofday);
-    $sql .= "and team_id = 1721 ";
-    $sql .= "ORDER BY t.id ";
+    $sql .= "and t.team_id = 1721 ";
+    $sql .= "ORDER BY m.id ";
 		$rs = $db->Execute($sql);
 
     $row = 1;
