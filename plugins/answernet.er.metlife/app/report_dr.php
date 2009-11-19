@@ -87,17 +87,16 @@ print_r($custom_fields);
 
     // Create Open Status Tab and set Column Width and Row Hight.
     $worksheet_open_status =& $workbook->addWorksheet('Open DR Report');
-    $worksheet_open_status->setColumn(0, 0, $radius*0.70);
-    $worksheet_open_status->setColumn(1, 1, $radius*0.85);
-    $worksheet_open_status->setColumn(2, 2, $radius*0.35);
-    $worksheet_open_status->setColumn(3, 3, $radius*0.61);
-    $worksheet_open_status->setColumn(4, 4, $radius*1.00);
-    $worksheet_open_status->setColumn(5, 5, $radius*0.82);
-    $worksheet_open_status->setColumn(6, 6, $radius*1.16);
-    $worksheet_open_status->setColumn(7, 7, $radius*2.40);
-    $worksheet_open_status->setColumn(8, 9, $radius*0.87);
-    $worksheet_open_status->setColumn(10, 10, $radius*3.28);
-    $worksheet_open_status->setColumn(11, 11, $radius*1.34);
+    $worksheet_open_status->setColumn(0, 0, $radius*0.85);
+    $worksheet_open_status->setColumn(1, 1, $radius*0.35);
+    $worksheet_open_status->setColumn(2, 2, $radius*0.61);
+    $worksheet_open_status->setColumn(3, 3, $radius*1.00);
+    $worksheet_open_status->setColumn(4, 4, $radius*0.82);
+    $worksheet_open_status->setColumn(5, 5, $radius*1.16);
+    $worksheet_open_status->setColumn(6, 6, $radius*2.40);
+    $worksheet_open_status->setColumn(7, 8, $radius*0.87);
+    $worksheet_open_status->setColumn(9, 9, $radius*3.28);
+    $worksheet_open_status->setColumn(10, 10, $radius*1.34);
 //    $worksheet_open_status->setRow(0, 28);
 //    $worksheet_open_status->setRow(2, 32);
 
@@ -208,18 +207,17 @@ print_r($custom_fields);
     $worksheet_monthly->write(34, 1, '', $format_general_title);
 
 // Added headers since they never change in the acd in Group.
-    $worksheet_open_status->write(0, 0, 'Status', $format_general_title);
-    $worksheet_open_status->write(0, 1, 'Due Date', $format_general_title);
-    $worksheet_open_status->write(0, 2, 'SLA', $format_general_title);
-    $worksheet_open_status->write(0, 3, 'SLA Age', $format_general_title);
-    $worksheet_open_status->write(0, 4, 'Date Received', $format_general_title);
-    $worksheet_open_status->write(0, 5, 'RM Name', $format_general_title);
-    $worksheet_open_status->write(0, 6, 'RM Employee id', $format_general_title);
-    $worksheet_open_status->write(0, 7, 'Request Type', $format_general_title);
-    $worksheet_open_status->write(0, 8, 'MetLife Staff', $format_general_title);
-    $worksheet_open_status->write(0, 9, 'New Hire', $format_general_title);
-    $worksheet_open_status->write(0, 10, 'Nates (email body)', $format_general_title);
-    $worksheet_open_status->write(0, 11, 'Ticket Mask', $format_general_title);
+    $worksheet_open_status->write(0, 0, 'Due Date', $format_general_title);
+    $worksheet_open_status->write(0, 1, 'SLA', $format_general_title);
+    $worksheet_open_status->write(0, 2, 'SLA Age', $format_general_title);
+    $worksheet_open_status->write(0, 3, 'Date Received', $format_general_title);
+    $worksheet_open_status->write(0, 4, 'RM Name', $format_general_title);
+    $worksheet_open_status->write(0, 5, 'RM Employee id', $format_general_title);
+    $worksheet_open_status->write(0, 6, 'Request Type', $format_general_title);
+    $worksheet_open_status->write(0, 7, 'MetLife Staff', $format_general_title);
+    $worksheet_open_status->write(0, 8, 'New Hire', $format_general_title);
+    $worksheet_open_status->write(0, 9, 'Nates (email body)', $format_general_title);
+    $worksheet_open_status->write(0, 10, 'Ticket Mask', $format_general_title);
 
 // Added headers since they never change in the acd in Group.
     $worksheet_transaction->write(0, 0, 'Status', $format_general_title);
@@ -247,14 +245,13 @@ print_r($custom_fields);
 //INNER JOIN message m on t.first_message_id = m.id 
 //and team_id = 1721
 //ORDER BY t.id
-    $sql = "SELECT t.id, t.mask, t.is_closed, ";
+    $sql = "SELECT t.id, t.mask, ";
     $sql .= "t.created_date ticket_created_date, mc.content ";
     $sql .= "FROM ticket t ";
     $sql .= "INNER JOIN message_content mc on t.first_message_id = mc.message_id ";
-    $sql .= "INNER JOIN message m on t.first_message_id = m.id ";
-    $sql .= sprintf("WHERE m.created_date > %d AND m.created_date <= %d ", $start_ofday, $end_ofday);
+    $sql .= "WHERE t.is_closed = 0 ";
     $sql .= "and t.team_id = 1721 ";
-    $sql .= "ORDER BY m.id ";
+    $sql .= "ORDER BY t.id ";
 		$rs = $db->Execute($sql);
 
     $row = 1;
@@ -263,39 +260,33 @@ print_r($custom_fields);
       $worksheet_open_status->setRow($row, 12);
       // Status, Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
-      // Status Column 0
-      if (intval($rs->fields['is_closed'])) {
-        $worksheet_open_status->write($row, 0, "closed", $format_general);
-      } else {
-        $worksheet_open_status->write($row, 0, "open", $format_general);
-      }
-      // Due Date Column 1
+      // Due Date Column 0
 
-      // SLA Column 2
+      // SLA Column 1
 
-      // SLA Age Column 3
+      // SLA Age Column 2
 
-      // Date Recieved Column 4
+      // Date Recieved Column 3
       $ticket_created_date = intval($rs->fields['ticket_created_date']);
-      $worksheet_open_status->write($row, 4, $ticket_created_date, $format_general);
+      $worksheet_open_status->write($row, 3, $ticket_created_date, $format_general);
 
-      // RM Name Column 5
+      // RM Name Column 4
       
-      // RM Employee ID Column 6
+      // RM Employee ID Column 5
       
-      // Topic / Request Type Column 7
+      // Topic / Request Type Column 6
       
-      // Staff Column 8
+      // Staff Column 7
       
-      // New Hire Column 9
+      // New Hire Column 8
       
-      // Email Body Column 10
+      // Email Body Column 9
       $message_content = $rs->fields['content'];
-      $worksheet_open_status->write($row, 10, trim($message_content), $format_general_nowrap);
+      $worksheet_open_status->write($row, 9, trim($message_content), $format_general_nowrap);
 
-      // Ticket Mask Column 11
+      // Ticket Mask Column 10
       $mask = $rs->fields['mask'];
-      $worksheet_open_status->write($row, 11, $mask, $format_general);
+      $worksheet_open_status->write($row, 10, $mask, $format_general);
 
       $row++;
 			$rs->MoveNext();
