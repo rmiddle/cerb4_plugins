@@ -33,7 +33,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $workers = DAO_Worker::getAll();
     $radius = 12;
     $start_time = 0;
-
+    date_default_timezone_set('Etc/UTC');
 		// Security
 		if(null == ($active_worker = CerberusApplication::getActiveWorker()))
 			die($translate->_('common.access_denied'));
@@ -52,8 +52,14 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		if (empty($start_time) || !is_numeric($start_time)) {
       return;
     }
-    print $translate->_('answernet.er.metlife.report.dr.daily.text');
-    print date("F j, Y", $start_time);
+    print '<br><br><br>';
+    
+    $start_ofday = mktime(0, 0, 0, date("m", $start_time), date("d", $start_time), date("Y", $start_time));
+    $end_ofday = $start_ofday + 86400;
+    print $translate->_('answernet.er.metlife.report.dr.date.from.text');
+    print date(" Y-m-d H:i:s ", $start_ofday);    
+    print $translate->_('answernet.er.metlife.report.dr.date.to.text');
+    print date(" Y-m-d H:i:s T", $end_ofday);    
     print '<br>';
     print $translate->_('answernet.er.metlife.generate.report');
 
@@ -88,6 +94,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $worksheet_daily->setColumn(6, 6, $radius*2.40);
     $worksheet_daily->setColumn(7, 8, $radius*0.87);
     $worksheet_daily->setColumn(9, 9, $radius*3.28);
+    $worksheet_daily->setColumn(10, 10, $radius*1.34);
 //    $worksheet_daily->setRow(0, 28);
 //    $worksheet_daily->setRow(2, 32);
 
@@ -193,16 +200,17 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $worksheet_daily->write(0, 7, 'MetLife Staff', $format_general_title);
     $worksheet_daily->write(0, 8, 'New Hire', $format_general_title);
     $worksheet_daily->write(0, 9, 'Nates (email body)', $format_general_title);
+    $worksheet_daily->write(0, 10, 'Ticket Mask', $format_general_title);
 
     print $translate->_('answernet.er.metlife.metlife.done');
     print '<br>';
-    print $translate->_('answernet.er.metlife.generating.email.detail');
+    print $translate->_('answernet.er.metlife.generating.dr.daily.report');
 
 		$groups = DAO_Group::getAll();
 		$buckets = DAO_Bucket::getAll();
-/*
-    $sql = "SELECT t.mask, a.email, m.address_id, a.contact_org_id, ";
-    $sql .= "t.created_date ticket_created_date, t.team_id, ";
+
+    $sql = "SELECT t.mask, m.address_id, a.contact_org_id, ";
+    $sql .= "t.created_date ticket_created_date, ";
     $sql .= "m.created_date message_created_date, mc.content, ";
     $sql .= "mh.header_value message_subject, m.worker_id, ";
     $sql .= "m.is_outgoing, mh_to.header_value outbound_email, t.team_id ";
@@ -220,7 +228,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $sql .= "ORDER BY m.id ";
 		$rs = $db->Execute($sql);
 
-    $row_inbound = 2;
+/*    $row_inbound = 2;
     $row_outbound = 2;
     $in_count_admin = array();
     $in_count_other = array();

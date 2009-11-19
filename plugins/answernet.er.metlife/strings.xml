@@ -25,8 +25,20 @@
       <tuv xml:lang="en_US"><seg>MetLife Daily DR Report Date:</seg></tuv>
     </tu>
 
+    <tu tuid='answernet.er.metlife.generating.dr.daily.report'>
+      <tuv xml:lang="en_US"><seg>Generate Daily Tab of the report. </seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.date.from.text'>
+      <tuv xml:lang="en_US"><seg>Creating report from</seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.date.to.text'>
+      <tuv xml:lang="en_US"><seg>to</seg></tuv>
+    </tu>
+
     <tu tuid='answernet.er.metlife.generate.report'>
-      <tuv xml:lang="en_US"><seg>Generate Report</seg></tuv>
+      <tuv xml:lang="en_US"><seg>Starting Generating Report</seg></tuv>
     </tu>
 
 		<tu tuid='answernet.er.metlife.download.xls'>
