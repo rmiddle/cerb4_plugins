@@ -219,7 +219,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $sql .= "t.created_date ticket_created_date, mc.content ";
     $sql .= "FROM ticket t ";
     $sql .= "INNER JOIN message_content mc on t.first_message_id = mc.message_id ";
-    $sql .= "INNER JOIN message_content mc on m.id = mc.message_id ";
+    $sql .= "INNER JOIN message m on t.first_message_id = m.id ";
     $sql .= sprintf("WHERE m.created_date > %d AND m.created_date <= %d ", $start_ofday, $end_ofday);
     $sql .= "and t.team_id = 1721 ";
     $sql .= "ORDER BY m.id ";
