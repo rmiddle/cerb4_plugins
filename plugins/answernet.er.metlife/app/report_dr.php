@@ -85,22 +85,37 @@ print_r($custom_fields);
     $worksheet_monthly->setColumn(5, 5, $radius*.69);
 //    $worksheet_monthly->setRow(0, 56);
 
-    // Create ACD Calls(Inbound) Tab and set Column Width and Row Hight.
-    $worksheet_daily =& $workbook->addWorksheet('Daily Report');
-    $worksheet_daily->setColumn(0, 0, $radius*0.70);
-    $worksheet_daily->setColumn(1, 1, $radius*0.85);
-    $worksheet_daily->setColumn(2, 2, $radius*0.35);
-    $worksheet_daily->setColumn(3, 3, $radius*1.00);
-    $worksheet_daily->setColumn(4, 4, $radius*0.82);
-    $worksheet_daily->setColumn(5, 5, $radius*1.16);
-    $worksheet_daily->setColumn(6, 6, $radius*2.40);
-    $worksheet_daily->setColumn(7, 8, $radius*0.87);
-    $worksheet_daily->setColumn(9, 9, $radius*3.28);
-    $worksheet_daily->setColumn(10, 10, $radius*1.34);
-//    $worksheet_daily->setRow(0, 28);
-//    $worksheet_daily->setRow(2, 32);
+    // Create Open Status Tab and set Column Width and Row Hight.
+    $worksheet_open_status =& $workbook->addWorksheet('Open DR Report');
+    $worksheet_open_status->setColumn(0, 0, $radius*0.70);
+    $worksheet_open_status->setColumn(1, 1, $radius*0.85);
+    $worksheet_open_status->setColumn(2, 2, $radius*0.35);
+    $worksheet_open_status->setColumn(3, 3, $radius*1.00);
+    $worksheet_open_status->setColumn(4, 4, $radius*0.82);
+    $worksheet_open_status->setColumn(5, 5, $radius*1.16);
+    $worksheet_open_status->setColumn(6, 6, $radius*2.40);
+    $worksheet_open_status->setColumn(7, 8, $radius*0.87);
+    $worksheet_open_status->setColumn(9, 9, $radius*3.28);
+    $worksheet_open_status->setColumn(10, 10, $radius*1.34);
+//    $worksheet_open_status->setRow(0, 28);
+//    $worksheet_open_status->setRow(2, 32);
 
-    // Formats used thoughout the workbook.
+    // Create Open Status Tab and set Column Width and Row Hight.
+    $worksheet_transaction=& $workbook->addWorksheet('Transaction Report');
+    $worksheet_transaction->setColumn(0, 0, $radius*0.70);
+    $worksheet_transaction->setColumn(1, 1, $radius*0.85);
+    $worksheet_transaction->setColumn(2, 2, $radius*0.35);
+    $worksheet_transaction->setColumn(3, 3, $radius*1.00);
+    $worksheet_transaction->setColumn(4, 4, $radius*0.82);
+    $worksheet_transaction->setColumn(5, 5, $radius*1.16);
+    $worksheet_transaction->setColumn(6, 6, $radius*2.40);
+    $worksheet_transaction->setColumn(7, 8, $radius*0.87);
+    $worksheet_transaction->setColumn(9, 9, $radius*3.28);
+    $worksheet_transaction->setColumn(10, 10, $radius*1.34);
+//    $worksheet_open_status->setRow(0, 28);
+//    $worksheet_open_status->setRow(2, 32);
+
+// Formats used thoughout the workbook.
     $format_general =& $workbook->addFormat();
     $format_general->setBorder(1);
     $format_general->setHAlign('left');
@@ -192,17 +207,31 @@ print_r($custom_fields);
     $worksheet_monthly->write(34, 1, '', $format_general_title);
 
 // Added headers since they never change in the acd in Group.
-    $worksheet_daily->write(0, 0, 'Status', $format_general_title);
-    $worksheet_daily->write(0, 1, 'Due Date', $format_general_title);
-    $worksheet_daily->write(0, 2, 'SLA', $format_general_title);
-    $worksheet_daily->write(0, 3, 'Date Received', $format_general_title);
-    $worksheet_daily->write(0, 4, 'RM Name', $format_general_title);
-    $worksheet_daily->write(0, 5, 'RM Employee id', $format_general_title);
-    $worksheet_daily->write(0, 6, 'Request Type', $format_general_title);
-    $worksheet_daily->write(0, 7, 'MetLife Staff', $format_general_title);
-    $worksheet_daily->write(0, 8, 'New Hire', $format_general_title);
-    $worksheet_daily->write(0, 9, 'Nates (email body)', $format_general_title);
-    $worksheet_daily->write(0, 10, 'Ticket Mask', $format_general_title);
+    $worksheet_open_status->write(0, 0, 'Status', $format_general_title);
+    $worksheet_open_status->write(0, 1, 'Due Date', $format_general_title);
+    $worksheet_open_status->write(0, 2, 'SLA', $format_general_title);
+    $worksheet_open_status->write(0, 3, 'SLA Age', $format_general_title);
+    $worksheet_open_status->write(0, 4, 'Date Received', $format_general_title);
+    $worksheet_open_status->write(0, 5, 'RM Name', $format_general_title);
+    $worksheet_open_status->write(0, 6, 'RM Employee id', $format_general_title);
+    $worksheet_open_status->write(0, 7, 'Request Type', $format_general_title);
+    $worksheet_open_status->write(0, 8, 'MetLife Staff', $format_general_title);
+    $worksheet_open_status->write(0, 9, 'New Hire', $format_general_title);
+    $worksheet_open_status->write(0, 10, 'Nates (email body)', $format_general_title);
+    $worksheet_open_status->write(0, 11, 'Ticket Mask', $format_general_title);
+
+// Added headers since they never change in the acd in Group.
+    $worksheet_transaction->write(0, 0, 'Status', $format_general_title);
+    $worksheet_transaction->write(0, 1, 'Due Date', $format_general_title);
+    $worksheet_transaction->write(0, 2, 'SLA', $format_general_title);
+    $worksheet_transaction->write(0, 3, 'Date Received', $format_general_title);
+    $worksheet_transaction->write(0, 4, 'RM Name', $format_general_title);
+    $worksheet_transaction->write(0, 5, 'RM Employee id', $format_general_title);
+    $worksheet_transaction->write(0, 6, 'Request Type', $format_general_title);
+    $worksheet_transaction->write(0, 7, 'MetLife Staff', $format_general_title);
+    $worksheet_transaction->write(0, 8, 'New Hire', $format_general_title);
+    $worksheet_transaction->write(0, 9, 'Nates (email body)', $format_general_title);
+    $worksheet_transaction->write(0, 10, 'Ticket Mask', $format_general_title);
 
     print $translate->_('answernet.er.metlife.metlife.done');
     print '<br>';
@@ -230,40 +259,42 @@ print_r($custom_fields);
     $row = 1;
     if(is_a($rs,'ADORecordSet'))
 		while(!$rs->EOF) {
-      $worksheet_daily->setRow($row, 12);
+      $worksheet_open_status->setRow($row, 12);
       // Status, Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
       // Status Column 0
       if (intval($rs->fields['is_closed'])) {
-        $worksheet_daily->write($row, 0, "closed", $format_general);
+        $worksheet_open_status->write($row, 0, "closed", $format_general);
       } else {
-        $worksheet_daily->write($row, 0, "open", $format_general);
+        $worksheet_open_status->write($row, 0, "open", $format_general);
       }
       // Due Date Column 1
 
       // SLA Column 2
 
-      // Date Recieved Column 3
+      // SLA Age Column 3
+
+      // Date Recieved Column 4
       $ticket_created_date = intval($rs->fields['ticket_created_date']);
-      $worksheet_daily->write($row, 3, $ticket_created_date, $format_general);
+      $worksheet_open_status->write($row, 4, $ticket_created_date, $format_general);
 
-      // RM Name Column 4
+      // RM Name Column 5
       
-      // RM Employee ID Column 5
+      // RM Employee ID Column 6
       
-      // Topic / Request Type Column 6
+      // Topic / Request Type Column 7
       
-      // Staff Column 7
+      // Staff Column 8
       
-      // New Hire Column 8
+      // New Hire Column 9
       
-      // Email Body Column 9
+      // Email Body Column 10
       $message_content = $rs->fields['content'];
-      $worksheet_daily->write($row, 9, trim($message_content), $format_general_nowrap);
+      $worksheet_open_status->write($row, 10, trim($message_content), $format_general_nowrap);
 
-      // Ticket Mask Column 10
+      // Ticket Mask Column 11
       $mask = $rs->fields['mask'];
-      $worksheet_daily->write($row, 10, $mask, $format_general);
+      $worksheet_open_status->write($row, 11, $mask, $format_general);
 
       $row++;
 			$rs->MoveNext();
