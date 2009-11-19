@@ -228,6 +228,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $row = 1;
     if(is_a($rs,'ADORecordSet'))
 		while(!$rs->EOF) {
+      $worksheet_daily->setRow($row, 12);
       // Status, Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
       // Status Column 0
