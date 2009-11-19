@@ -258,7 +258,7 @@ print_r($custom_fields);
     if(is_a($rs,'ADORecordSet'))
 		while(!$rs->EOF) {
       $worksheet_open_status->setRow($row, 12);
-      // Status, Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
+      // Due Date, SLA, SLA Age, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
       // Due Date Column 0
 
