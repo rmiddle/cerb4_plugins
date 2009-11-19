@@ -209,143 +209,55 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$groups = DAO_Group::getAll();
 		$buckets = DAO_Bucket::getAll();
 
-    $sql = "SELECT t.mask, m.address_id, a.contact_org_id, ";
+    $sql = "SELECT t.mask, t.is_closed, ";
     $sql .= "t.created_date ticket_created_date, ";
-    $sql .= "m.created_date message_created_date, mc.content, ";
-    $sql .= "mh.header_value message_subject, m.worker_id, ";
-    $sql .= "m.is_outgoing, mh_to.header_value outbound_email, t.team_id ";
-    $sql .= "FROM message m ";
-    $sql .= "INNER JOIN ticket t ON m.ticket_id = t.id ";
-    $sql .= "INNER JOIN address a ON m.address_id = a.id ";
-    $sql .= "INNER JOIN message_content mc on m.id = mc.message_id ";
-    $sql .= "INNER JOIN message_header mh on m.id = mh.message_id ";
-    $sql .= "and mh.header_name = 'subject' ";
-    $sql .= "INNER JOIN message_header mh_to on m.id = mh_to.message_id ";
-    $sql .= "and mh_to.header_name = 'to' ";
-    $sql .= sprintf("WHERE m.created_date > %d AND m.created_date <= %d ", $start_time, $end_time);
-    // Set abouve based on group selected.
-    $sql .= $group_sql;
-    $sql .= "ORDER BY m.id ";
+    $sql .= "FROM ticket t ";
+//    $sql .= "INNER JOIN message_content mc on t.id = mc.message_id ";
+    $sql .= sprintf("WHERE t.created_date > %d AND t.created_date <= %d ", $start_ofday, $end_ofday);
+    $sql .= "and team_id = 1721 ";
+    $sql .= "ORDER BY t.id ";
 		$rs = $db->Execute($sql);
 
-/*    $row_inbound = 2;
-    $row_outbound = 2;
-    $in_count_admin = array();
-    $in_count_other = array();
-    $out_count_admin = array();
-    $out_count_other = array();
-
-		if(is_a($rs,'ADORecordSet'))
+    $row = 1;
+    if(is_a($rs,'ADORecordSet'))
 		while(!$rs->EOF) {
+      // Status, Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
-			$mask = $rs->fields['mask'];
-      $ticket_created_date = intval($rs->fields['ticket_created_date']);
-      $team_id = intval($rs->fields['team_id']);
-      // Date Format Month/Day/Year Hour:Min:Sec AM/PM
-      $message_created_date = date("n/j/y g:i:s A",intval($rs->fields['message_created_date']));
-      $message_content = $rs->fields['content'];
-      $message_subject = $rs->fields['message_subject'];
-      $worker_id = $rs->fields['worker_id'];
-      $is_outgoing = $rs->fields['is_outgoing'];
-      if ($team_id == 756) {
-        $team_text = 'First Person';
-      }
-      elseif ($team_id == 782) {
-        $team_text = 'iDesign';
-      }
-      else {
-        $team_text = 'Error';
-      }
-      if($worker_id) {
-        $worker_name = $workers[$worker_id]->first_name;
-      }
-      else {
-        $worker_name = "";
-      }
-      if ($is_outgoing) {
-        $outbound_email = $rs->fields['outbound_email'];
-        $to = array();
-        $to = CerberusParser::parseRfcAddress($outbound_email);
-        @$toAddress = $to[0]->mailbox.'@'.$to[0]->host;
-        $toAddressInst = CerberusApplication::hashLookupAddress($toAddress, true);
-        $address_id = $toAddressInst->id;
-        $contact_org_id = $toAddressInst->contact_org_id;
-        $email = $toAddressInst->email;
+      // Status Column 0
+      if (intval($rs->fields['is_closed'])) {
+        $worksheet_daily->write($row, 0, "closed", $format_general);
       } else {
-        $address_id = $rs->fields['address_id'];
-        $contact_org_id = $rs->fields['contact_org_id'];
-        $email = $rs->fields['email'];
+        $worksheet_daily->write($row, 0, "open", $format_general);
       }
-      if ($is_outgoing) {
-        $worksheet_outbound->setRow($row_outbound, 12);
-        $worksheet_outbound->write($row_outbound, 0, $email, $format_general);
-        $worksheet_outbound->write($row_outbound, 1, "", $format_general);
-        $worksheet_outbound->write($row_outbound, 2, "", $format_general);
-        $worksheet_outbound->write($row_outbound, 3, $message_created_date, $format_general);
-        $worksheet_outbound->write($row_outbound, 4, $mask, $format_general);
-        $worksheet_outbound->write($row_outbound, 5, trim($message_subject), $format_general_nowrap);
-        $worksheet_outbound->write($row_outbound, 6, trim(strip_tags($message_content)));
-        $worksheet_outbound->writeString($row_outbound, 10, $worker_name, $format_general);
-        $worksheet_outbound->write($row_outbound, 11, $team_text, $format_general);
-        $row_outbound++;
-      }
-      else {
-        $worksheet_inbound->setRow($row_inbound, 12);
-        $worksheet_inbound->write($row_inbound, 0, $email, $format_general);
-        $worksheet_inbound->write($row_inbound, 1, "", $format_general);
-        $worksheet_inbound->write($row_inbound, 2, "", $format_general);
-        $worksheet_inbound->write($row_inbound, 3, $message_created_date, $format_general);
-        $worksheet_inbound->write($row_inbound, 4, $mask, $format_general);
-        $worksheet_inbound->write($row_inbound, 5, trim($message_subject), $format_general_nowrap);
-        $worksheet_inbound->writeString($row_inbound, 6, trim(strip_tags($message_content)));
-        $worksheet_inbound->write($row_inbound, 10, $team_text, $format_general);
-        $row_inbound++;
-      }
+      // Due Date Column 1
 
-      if ($is_outgoing) {
-        if ($contact_org_id == 1) {
-          if(!isset($out_count_admin[$address_id]['count'])) {
-            $out_count_admin[$address_id]['email'] = $email;
-            $out_count_admin[$address_id]['count'] = 1;
-          }
-          else {
-            $out_count_admin[$address_id]['count']++;
-          }
-        }
-        else {
-          if(!isset($out_count_other[$address_id]['count'])) {
-            $out_count_other[$address_id]['email'] = $email;
-            $out_count_other[$address_id]['count'] = 1;
-          }
-          else {
-            $out_count_other[$address_id]['count']++;
-          }
-        }
-      }
-      else {
-        if ($contact_org_id == 1) {
-          if(!isset($in_count_admin[$address_id]['count'])) {
-            $in_count_admin[$address_id]['email'] = $email;
-            $in_count_admin[$address_id]['count'] = 1;
-          }
-          else {
-            $in_count_admin[$address_id]['count']++;
-          }
-        }
-        else {
-          if(!isset($in_count_other[$address_id]['count'])) {
-            $in_count_other[$address_id]['email'] = $email;
-            $in_count_other[$address_id]['count'] = 1;
-          }
-          else {
-            $in_count_other[$address_id]['count']++;
-          }
-        }
-      }
+      // SLA Column 2
 
+      // Date Recieved Column 3
+      $ticket_created_date = intval($rs->fields['ticket_created_date']);
+      $worksheet_daily->write($row, 3, $ticket_created_date, $format_general);
+      // RM Name Column 4
+      
+      // RM Employee ID Column 4
+      
+      // Topic / Request Type Column 5
+      
+      // Staff Column 6
+      
+      // New Hire Column 7
+      
+      // Email Body Column 8
+//      $message_content = $rs->fields['content'];
+//      $worksheet_daily->write($row_inbound, 5, trim($message_content), $format_general_nowrap);
+
+      // Ticket Mask Column 9
+      $mask = $rs->fields['mask'];
+      $worksheet_daily->write($row, 9, $mask, $format_general);
+
+      $row++;
 			$rs->MoveNext();
 		}
-
+/*
     print $translate->_('answernet.er.metlife.metlife.done');
     print '<br>';
     print $translate->_('answernet.er.metlife.generating.email.count');
