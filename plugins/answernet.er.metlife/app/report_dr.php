@@ -30,7 +30,9 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$db = DevblocksPlatform::getDatabaseService();
 		$translate = DevblocksPlatform::getTranslationService();
     $url = DevblocksPlatform::getUrlService();
-    $workers = DAO_Worker::getAll();
+    $ticket_fields = DAO_CustomField::getAll();
+print_r($custom_fields);
+
     $radius = 12;
     $start_time = 0;
     date_default_timezone_set('Etc/UTC');
