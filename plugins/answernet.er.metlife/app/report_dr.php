@@ -259,7 +259,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       
       // Email Body Column 9
       $message_content = $rs->fields['content'];
-      $worksheet_daily->write($row_inbound, 9, trim($message_content), $format_general_nowrap);
+      $worksheet_daily->write($row, 9, trim($message_content), $format_general_nowrap);
 
       // Ticket Mask Column 10
       $mask = $rs->fields['mask'];
