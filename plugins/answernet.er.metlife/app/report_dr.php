@@ -246,23 +246,24 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       // Date Recieved Column 3
       $ticket_created_date = intval($rs->fields['ticket_created_date']);
       $worksheet_daily->write($row, 3, $ticket_created_date, $format_general);
+
       // RM Name Column 4
       
-      // RM Employee ID Column 4
+      // RM Employee ID Column 5
       
-      // Topic / Request Type Column 5
+      // Topic / Request Type Column 6
       
-      // Staff Column 6
+      // Staff Column 7
       
-      // New Hire Column 7
+      // New Hire Column 8
       
-      // Email Body Column 8
+      // Email Body Column 9
       $message_content = $rs->fields['content'];
-      $worksheet_daily->write($row_inbound, 5, trim($message_content), $format_general_nowrap);
+      $worksheet_daily->write($row_inbound, 9, trim($message_content), $format_general_nowrap);
 
-      // Ticket Mask Column 9
+      // Ticket Mask Column 10
       $mask = $rs->fields['mask'];
-      $worksheet_daily->write($row, 9, $mask, $format_general);
+      $worksheet_daily->write($row, 10, $mask, $format_general);
 
       $row++;
 			$rs->MoveNext();
