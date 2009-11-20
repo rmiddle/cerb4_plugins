@@ -236,9 +236,6 @@ print_r($custom_fields);
     print '<br>';
     print $translate->_('answernet.er.metlife.generating.dr.daily.report');
 
-		$groups = DAO_Group::getAll();
-		$buckets = DAO_Bucket::getAll();
-
 //SELECT t.id, t.mask, t.created_date ticket_created_date, mc.content, t.is_closed 
 //FROM ticket t 
 //INNER JOIN message_content mc on t.first_message_id = mc.message_id 
@@ -291,6 +288,73 @@ print_r($custom_fields);
       $row++;
 			$rs->MoveNext();
 		}
+
+    print $translate->_('answernet.er.metlife.metlife.done');
+    print '<br>';
+    print $translate->_('answernet.er.metlife.generating.dr.transaction.report');
+
+//SELECT t.mask, t.created_date ticket_created_date,
+//m.created_date message_created_date, mc.content,  
+//m.is_outgoing  
+//FROM message m 
+//INNER JOIN ticket t ON m.ticket_id = t.id 
+//INNER JOIN address a ON m.address_id = a.id 
+//INNER JOIN message_content mc on m.id = mc.message_id 
+//WHERE t.team_id = 1721
+//ORDER BY m.id;
+    $sql = "SELECT t.mask, t.created_date ticket_created_date, ";
+    $sql .= "m.created_date message_created_date, mc.content, m.is_outgoing ";
+    $sql .= "FROM message m ";
+    $sql .= "INNER JOIN ticket t ON m.ticket_id = t.id ";
+    $sql .= "INNER JOIN address a ON m.address_id = a.id ";
+    $sql .= "INNER JOIN message_content mc on m.id = mc.message_id ";
+    $sql .= sprintf("WHERE m.created_date > %d AND m.created_date <= %d ", $start_time, $end_time);
+    $sql .= "and t.team_id = 1721 ";
+    $sql .= "ORDER BY t.id ";
+    $rs = $db->Execute($sql);
+
+    $row = 1;
+    if(is_a($rs,'ADORecordSet'))
+    while(!$rs->EOF) {
+      $worksheet_transaction->setRow($row, 12);
+      // Status, Due Date, SLA, SLA Age, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
+
+      // Due Date Column 0
+
+      // SLA Column 1
+
+      // SLA Age Column 2
+
+      // Date Recieved Column 3
+      $ticket_created_date = intval($rs->fields['ticket_created_date']);
+      $worksheet_transaction->write($row, 3, $ticket_created_date, $format_general);
+
+      // RM Name Column 4
+      
+      // RM Employee ID Column 5
+      
+      // Topic / Request Type Column 6
+      
+      // Staff Column 7
+      
+      // New Hire Column 8
+      
+      // Email Body Column 9
+      $message_content = $rs->fields['content'];
+      $worksheet_transaction->write($row, 9, trim($message_content), $format_general_nowrap);
+
+      // Ticket Mask Column 10
+      $mask = $rs->fields['mask'];
+      $worksheet_transaction->write($row, 10, $mask, $format_general);
+
+      $row++;
+      $rs->MoveNext();
+    }
+
+    print $translate->_('answernet.er.metlife.metlife.done');
+    print '<br>';
+    print $translate->_('answernet.er.metlife.generating.dr.monthly.report');
+
 /*
     print $translate->_('answernet.er.metlife.metlife.done');
     print '<br>';
