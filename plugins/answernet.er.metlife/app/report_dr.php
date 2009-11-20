@@ -30,7 +30,6 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$db = DevblocksPlatform::getDatabaseService();
 		$translate = DevblocksPlatform::getTranslationService();
     $url = DevblocksPlatform::getUrlService();
-    $ticket_fields = DAO_CustomField::getAll();
 
     $radius = 12;
     $start_time = 0;
@@ -254,6 +253,10 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     if(is_a($rs,'ADORecordSet'))
 		while(!$rs->EOF) {
       $worksheet_open_status->setRow($row, 12);
+      $custom_fields = DAO_CustomFieldValue::getValuesBySourceIds(ChCustomFieldSource_Ticket::ID, $rs->fields['id']));
+print "<pre>";
+print_r($custom_fields)
+print "</pre>";
       // Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
       
       // Due Date Column 0
