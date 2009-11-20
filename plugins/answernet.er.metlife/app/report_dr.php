@@ -31,7 +31,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$translate = DevblocksPlatform::getTranslationService();
     $url = DevblocksPlatform::getUrlService();
     $ticket_fields = DAO_CustomField::getAll();
-print_r($custom_fields);
+print_r($ticket_fields);
 
     $radius = 12;
     $start_time = 0;
@@ -308,7 +308,7 @@ print_r($custom_fields);
     $sql .= "INNER JOIN ticket t ON m.ticket_id = t.id ";
     $sql .= "INNER JOIN address a ON m.address_id = a.id ";
     $sql .= "INNER JOIN message_content mc on m.id = mc.message_id ";
-    $sql .= sprintf("WHERE m.created_date > %d AND m.created_date <= %d ", $start_time, $end_time);
+    $sql .= sprintf("WHERE m.created_date > %d AND m.created_date <= %d ", $start_ofday, $end_ofday);
     $sql .= "and t.team_id = 1721 ";
     $sql .= "ORDER BY t.id ";
     $rs = $db->Execute($sql);
