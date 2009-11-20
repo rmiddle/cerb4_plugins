@@ -260,8 +260,13 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       // Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
       
       // Due Date Column 0
-      $ticket_created_date = date("n/j/y",intval($custom_fields[$rs->fields['id']][1]));
-      $worksheet_open_status->writeString($row, 0, $ticket_created_date, $format_general);
+      $due_date_int = intval($custom_fields[$rs->fields['id']][1]);
+      if ($due_date_int) {
+        $ticket_due_date = date("n/j/y", $due_date_int);
+      } else {
+        $ticket_due_date = "";
+      }
+      $worksheet_open_status->writeString($row, 0, $ticket_due_date, $format_general);
 
       // SLA Column 1
 
@@ -331,8 +336,13 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       }
 
       // Due Date Column 1
-      $ticket_created_date = date("n/j/y",intval($custom_fields[$rs->fields['id']][1]));
-      $worksheet_transaction->writeString($row, 1, $ticket_created_date, $format_general);
+      $due_date_int = intval($custom_fields[$rs->fields['id']][1]);
+      if ($due_date_int) {
+        $ticket_due_date = date("n/j/y", $due_date_int);
+      } else {
+        $ticket_due_date = "";
+      }
+      $worksheet_transaction->writeString($row, 1, $ticket_due_date, $format_general);
 
       // SLA Column 2
 
