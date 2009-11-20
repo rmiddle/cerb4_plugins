@@ -277,7 +277,7 @@ print "<br>";
 print time();
 print "<br>";
 
-      if (date("U", $due_date_int) < time()) {
+      if (date("U", $due_date_int) >= time()) {
         $worksheet_open_status->write($row, 2, "No", $format_general);
       } else {
         $worksheet_open_status->write($row, 2, "Yes", $format_general);
