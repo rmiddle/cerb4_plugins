@@ -264,7 +264,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       // SLA Done
 
       // Date Recieved Column 3
-      $ticket_created_date = '=date(' . date("n/j/y g:i:s A",intval($rs->fields['ticket_created_date'])) . ")";
+      $ticket_created_date = date("\'n/j/y g:i:s A",intval($rs->fields['ticket_created_date']));
       $worksheet_open_status->writeFormula($row, 3, $ticket_created_date, $format_general);
 
       // RM Name Column 4
@@ -330,7 +330,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       // SLA Column 2
 
       // Date Recieved Column 3
-      $ticket_created_date = '=date(' . date("n/j/y g:i:s A",intval($rs->fields['ticket_created_date'])) . ")";
+      $ticket_created_date = date("\'n/j/y g:i:s A",intval($rs->fields['ticket_created_date']));
       $worksheet_transaction->writeFormula($row, 3, $ticket_created_date, $format_general);
 
       // RM Name Column 4
