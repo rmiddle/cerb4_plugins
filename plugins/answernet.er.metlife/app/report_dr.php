@@ -254,12 +254,14 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		while(!$rs->EOF) {
       $worksheet_open_status->setRow($row, 12);
       $custom_fields = DAO_CustomFieldValue::getValuesBySourceIds(ChCustomFieldSource_Ticket::ID, $rs->fields['id']);
-print "<pre>";
-print_r($custom_fields);
-print "</pre>";
+//print "<pre>";
+//print_r($custom_fields);
+//print "</pre>";
       // Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
       
       // Due Date Column 0
+      $ticket_created_date = date("n/j/y g:i:s A",intval($custom_fields[$rs->fields['id']][1]));
+      $worksheet_open_status->writeString($row, 0, $ticket_created_date, $format_general);
 
       // SLA Column 1
 
