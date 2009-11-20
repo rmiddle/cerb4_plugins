@@ -31,7 +31,9 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$translate = DevblocksPlatform::getTranslationService();
     $url = DevblocksPlatform::getUrlService();
     $ticket_fields = DAO_CustomField::getAll();
+print "<pre>";
 print_r($ticket_fields);
+print "</pre>";
 
     $radius = 12;
     $start_time = 0;
@@ -223,14 +225,14 @@ print_r($ticket_fields);
     $worksheet_transaction->write(0, 0, 'Status', $format_general_title);
     $worksheet_transaction->write(0, 1, 'Due Date', $format_general_title);
     $worksheet_transaction->write(0, 2, 'SLA', $format_general_title);
-    $worksheet_transaction->write(0, 4, 'Date Received', $format_general_title);
-    $worksheet_transaction->write(0, 5, 'RM Name', $format_general_title);
-    $worksheet_transaction->write(0, 6, 'RM Employee id', $format_general_title);
-    $worksheet_transaction->write(0, 7, 'Request Type', $format_general_title);
-    $worksheet_transaction->write(0, 8, 'MetLife Staff', $format_general_title);
-    $worksheet_transaction->write(0, 9, 'New Hire', $format_general_title);
-    $worksheet_transaction->write(0, 10, 'Nates (email body)', $format_general_title);
-    $worksheet_transaction->write(0, 11, 'Ticket Mask', $format_general_title);
+    $worksheet_transaction->write(0, 3, 'Date Received', $format_general_title);
+    $worksheet_transaction->write(0, 4, 'RM Name', $format_general_title);
+    $worksheet_transaction->write(0, 5, 'RM Employee id', $format_general_title);
+    $worksheet_transaction->write(0, 6, 'Request Type', $format_general_title);
+    $worksheet_transaction->write(0, 7, 'MetLife Staff', $format_general_title);
+    $worksheet_transaction->write(0, 8, 'New Hire', $format_general_title);
+    $worksheet_transaction->write(0, 9, 'Nates (email body)', $format_general_title);
+    $worksheet_transaction->write(0, 10, 'Ticket Mask', $format_general_title);
 
     print $translate->_('answernet.er.metlife.metlife.done');
     print '<br>';
@@ -255,13 +257,13 @@ print_r($ticket_fields);
     if(is_a($rs,'ADORecordSet'))
 		while(!$rs->EOF) {
       $worksheet_open_status->setRow($row, 12);
-      // Due Date, SLA, SLA Age, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
-
+      // Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
+      
       // Due Date Column 0
 
       // SLA Column 1
 
-      // SLA Age Column 2
+      // SLA Done
 
       // Date Recieved Column 3
       $ticket_created_date = intval($rs->fields['ticket_created_date']);
@@ -319,11 +321,15 @@ print_r($ticket_fields);
       $worksheet_transaction->setRow($row, 12);
       // Status, Due Date, SLA, SLA Age, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
-      // Due Date Column 0
+      if (intval($rs->fields['is_outgoing'])) {
+        $worksheet_transaction->write($row, 0, "Sent", $format_general);
+      } else {
+        $worksheet_transaction->write($row, 0, "Recieved", $format_general);
+      }
 
-      // SLA Column 1
+      // Due Date Column 1
 
-      // SLA Age Column 2
+      // SLA Column 2
 
       // Date Recieved Column 3
       $ticket_created_date = intval($rs->fields['ticket_created_date']);
