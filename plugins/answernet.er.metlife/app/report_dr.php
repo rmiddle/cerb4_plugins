@@ -287,8 +287,10 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $worksheet_open_status->write($row, 6, $custom_fields[$rs->fields['id']][4], $format_general);
       
       // Staff Column 7
+      $worksheet_open_status->write($row, 7, $custom_fields[$rs->fields['id']][8], $format_general);
       
       // New Hire Column 8
+      $worksheet_open_status->write($row, 8, $custom_fields[$rs->fields['id']][6], $format_general);
       
       // Email Body Column 9
       $message_content = $rs->fields['content'];
@@ -365,8 +367,10 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $worksheet_transaction->write($row, 6, $custom_fields[$rs->fields['id']][4], $format_general);
       
       // Staff Column 7
+      $worksheet_transaction->write($row, 7, $custom_fields[$rs->fields['id']][8], $format_general);
       
       // New Hire Column 8
+      $worksheet_transaction->write($row, 8, $custom_fields[$rs->fields['id']][6], $format_general);
       
       // Email Body Column 9
       $message_content = $rs->fields['content'];
