@@ -331,7 +331,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 
       // Due Date Column 1
       $ticket_created_date = date("n/j/y",intval($custom_fields[$rs->fields['id']][1]));
-      $worksheet_open_status->writeString($row, 1, $ticket_created_date, $format_general);
+      $worksheet_transaction->writeString($row, 1, $ticket_created_date, $format_general);
 
       // SLA Column 2
 
