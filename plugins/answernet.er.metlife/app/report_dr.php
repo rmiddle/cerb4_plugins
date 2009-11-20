@@ -31,9 +31,6 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$translate = DevblocksPlatform::getTranslationService();
     $url = DevblocksPlatform::getUrlService();
     $ticket_fields = DAO_CustomField::getAll();
-print "<pre>";
-print_r($ticket_fields);
-print "</pre>";
 
     $radius = 12;
     $start_time = 0;
@@ -322,9 +319,9 @@ print "</pre>";
       // Status, Due Date, SLA, SLA Age, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
       if (intval($rs->fields['is_outgoing'])) {
-        $worksheet_transaction->write($row, 0, "Sent", $format_general);
-      } else {
         $worksheet_transaction->write($row, 0, "Recieved", $format_general);
+      } else {
+        $worksheet_transaction->write($row, 0, "Sent", $format_general);
       }
 
       // Due Date Column 1
