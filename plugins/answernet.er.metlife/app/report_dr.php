@@ -272,7 +272,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $worksheet_open_status->write($row, 1, $custom_fields[$rs->fields['id']][5], $format_general);
 
       // Overdue Column 2
-      if ($due_date_int < date()) {
+      if (date("U", $due_date_int) < time()) {
         $worksheet_open_status->write($row, 2, "No", $format_general);
       } else {
         $worksheet_open_status->write($row, 2, "Yes", $format_general);
