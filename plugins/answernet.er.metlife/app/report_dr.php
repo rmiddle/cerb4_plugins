@@ -88,8 +88,8 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $worksheet_open_status->setColumn(0, 0, $radius*0.85);
     $worksheet_open_status->setColumn(1, 1, $radius*0.35);
     $worksheet_open_status->setColumn(2, 2, $radius*0.70);
-    $worksheet_open_status->setColumn(3, 3, $radius*1.85);
-    $worksheet_open_status->setColumn(4, 4, $radius*1.40);
+    $worksheet_open_status->setColumn(3, 3, $radius*1.65);
+    $worksheet_open_status->setColumn(4, 4, $radius*1.85);
     $worksheet_open_status->setColumn(5, 5, $radius*1.16);
     $worksheet_open_status->setColumn(6, 6, $radius*2.60);
     $worksheet_open_status->setColumn(7, 8, $radius*0.87);
@@ -103,7 +103,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $worksheet_transaction->setColumn(0, 0, $radius*0.85);
     $worksheet_transaction->setColumn(1, 1, $radius*0.85);
     $worksheet_transaction->setColumn(2, 2, $radius*0.35);
-    $worksheet_transaction->setColumn(3, 3, $radius*0.70);
+    $worksheet_transaction->setColumn(3, 3, $radius*1.65);
     $worksheet_transaction->setColumn(4, 4, $radius*1.85);
     $worksheet_transaction->setColumn(5, 5, $radius*1.16);
     $worksheet_transaction->setColumn(6, 6, $radius*2.60);
