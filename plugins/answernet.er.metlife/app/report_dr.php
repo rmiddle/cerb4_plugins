@@ -269,8 +269,9 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $worksheet_open_status->writeString($row, 0, $ticket_due_date, $format_general);
 
       // SLA Column 1
+      $worksheet_open_status->write($row, 1, $custom_fields[$rs->fields['id']][5], $format_general);
 
-      // SLA Done
+      // SLA Age Column 2
 
       // Date Recieved Column 3
       $ticket_created_date = date("n/j/y g:i:s A",intval($rs->fields['ticket_created_date']));
@@ -345,6 +346,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $worksheet_transaction->writeString($row, 1, $ticket_due_date, $format_general);
 
       // SLA Column 2
+      $worksheet_transaction->write($row, 2, $custom_fields[$rs->fields['id']][5], $format_general);
 
       // Date Recieved Column 3
       $ticket_created_date = date("n/j/y g:i:s A",intval($rs->fields['ticket_created_date']));
