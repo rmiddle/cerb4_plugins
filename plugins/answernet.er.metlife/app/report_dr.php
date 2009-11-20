@@ -278,10 +278,13 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $worksheet_open_status->writeString($row, 3, $ticket_created_date, $format_general);
 
       // RM Name Column 4
+      $worksheet_open_status->write($row, 4, $custom_fields[$rs->fields['id']][3], $format_general);
       
       // RM Employee ID Column 5
+      $worksheet_open_status->write($row, 5, $custom_fields[$rs->fields['id']][2], $format_general);
       
       // Topic / Request Type Column 6
+      $worksheet_open_status->write($row, 6, $custom_fields[$rs->fields['id']][4], $format_general);
       
       // Staff Column 7
       
@@ -353,10 +356,13 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $worksheet_transaction->writeString($row, 3, $ticket_created_date, $format_general);
 
       // RM Name Column 4
+      $worksheet_transaction->write($row, 4, $custom_fields[$rs->fields['id']][3], $format_general);
       
       // RM Employee ID Column 5
+      $worksheet_transaction->write($row, 5, $custom_fields[$rs->fields['id']][2], $format_general);
       
       // Topic / Request Type Column 6
+      $worksheet_transaction->write($row, 6, $custom_fields[$rs->fields['id']][4], $format_general);
       
       // Staff Column 7
       
