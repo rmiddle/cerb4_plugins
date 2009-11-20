@@ -85,7 +85,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 
     // Create Open Status Tab and set Column Width and Row Hight.
     $worksheet_open_status =& $workbook->addWorksheet('Open DR Report');
-    $worksheet_open_status->setColumn(0, 0, $radius*1.65);
+    $worksheet_open_status->setColumn(0, 0, $radius*0.85);
     $worksheet_open_status->setColumn(1, 1, $radius*0.35);
     $worksheet_open_status->setColumn(2, 2, $radius*0.70);
     $worksheet_open_status->setColumn(3, 3, $radius*1.65);
@@ -101,7 +101,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     // Create Open Status Tab and set Column Width and Row Hight.
     $worksheet_transaction=& $workbook->addWorksheet('Transaction Report');
     $worksheet_transaction->setColumn(0, 0, $radius*0.85);
-    $worksheet_transaction->setColumn(1, 1, $radius*1.65);
+    $worksheet_transaction->setColumn(1, 1, $radius*0.85);
     $worksheet_transaction->setColumn(2, 2, $radius*0.35);
     $worksheet_transaction->setColumn(3, 3, $radius*1.65);
     $worksheet_transaction->setColumn(4, 4, $radius*1.00);
@@ -260,7 +260,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       // Due Date, SLA, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
       
       // Due Date Column 0
-      $ticket_created_date = date("n/j/y g:i:s A",intval($custom_fields[$rs->fields['id']][1]));
+      $ticket_created_date = date("n/j/y",intval($custom_fields[$rs->fields['id']][1]));
       $worksheet_open_status->writeString($row, 0, $ticket_created_date, $format_general);
 
       // SLA Column 1
@@ -330,6 +330,8 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       }
 
       // Due Date Column 1
+      $ticket_created_date = date("n/j/y",intval($custom_fields[$rs->fields['id']][1]));
+      $worksheet_open_status->writeString($row, 1, $ticket_created_date, $format_general);
 
       // SLA Column 2
 
