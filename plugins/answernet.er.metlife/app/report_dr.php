@@ -207,7 +207,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 // Added headers since they never change in the acd in Group.
     $worksheet_open_status->write(0, 0, 'Due Date', $format_general_title);
     $worksheet_open_status->write(0, 1, 'SLA', $format_general_title);
-    $worksheet_open_status->write(0, 2, 'SLA Age', $format_general_title);
+    $worksheet_open_status->write(0, 2, 'Overdue', $format_general_title);
     $worksheet_open_status->write(0, 3, 'Date Received', $format_general_title);
     $worksheet_open_status->write(0, 4, 'RM Name', $format_general_title);
     $worksheet_open_status->write(0, 5, 'RM Employee id', $format_general_title);
@@ -271,7 +271,12 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       // SLA Column 1
       $worksheet_open_status->write($row, 1, $custom_fields[$rs->fields['id']][5], $format_general);
 
-      // SLA Age Column 2
+      // Overdue Column 2
+      if ($due_date_int < date()) {
+        $worksheet_open_status->write($row, 2, "No", $format_general);
+      } else {
+        $worksheet_open_status->write($row, 2, "Yes", $format_general);
+      }
 
       // Date Recieved Column 3
       $ticket_created_date = date("n/j/y g:i:s A",intval($rs->fields['ticket_created_date']));
