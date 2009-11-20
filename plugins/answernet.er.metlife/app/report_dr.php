@@ -306,7 +306,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 //INNER JOIN message_content mc on m.id = mc.message_id 
 //WHERE t.team_id = 1721
 //ORDER BY m.id;
-    $sql = "SELECT t.mask, t.created_date ticket_created_date, ";
+    $sql = "SELECT t.id, t.mask, t.created_date ticket_created_date, ";
     $sql .= "m.created_date message_created_date, mc.content, m.is_outgoing ";
     $sql .= "FROM message m ";
     $sql .= "INNER JOIN ticket t ON m.ticket_id = t.id ";
@@ -321,6 +321,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     if(is_a($rs,'ADORecordSet'))
     while(!$rs->EOF) {
       $worksheet_transaction->setRow($row, 12);
+      $custom_fields = DAO_CustomFieldValue::getValuesBySourceIds(ChCustomFieldSource_Ticket::ID, $rs->fields['id']);
       // Status, Due Date, SLA, SLA Age, Date Recived, RM Name, RM Employee ID, Topic, Staff, New Hire, Notes/Email Body
 
       if (intval($rs->fields['is_outgoing'])) {
