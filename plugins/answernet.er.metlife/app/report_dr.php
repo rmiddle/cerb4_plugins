@@ -27,6 +27,7 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 	}
 
   function AnswernetMetlifeReportDRAction() {
+      self::AnswernetMetlifeReportDRReport())
       
   }
 
