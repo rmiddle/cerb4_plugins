@@ -26,7 +26,11 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$tpl->display('file:' . $this->tpl_path . '/report_metlife_dr.tpl');
 	}
 
-	function AnswernetMetlifeReportDRAction() {
+  function AnswernetMetlifeReportDRAction() {
+      
+  }
+
+	function AnswernetMetlifeReportDRReport() {
 		$db = DevblocksPlatform::getDatabaseService();
 		$translate = DevblocksPlatform::getTranslationService();
     $url = DevblocksPlatform::getUrlService();

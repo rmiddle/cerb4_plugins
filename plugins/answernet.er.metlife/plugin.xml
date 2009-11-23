@@ -27,6 +27,17 @@
       </params>
     </extension>
     
+    <extension point="cerberusweb.cron">
+      <id>answernet.er.metlife.id.cron</id>
+      <name>Answernet Metlife Cron Config.</name>
+      <class>
+        <file>app/cron.php</file>
+        <name>AnswernetMetlifeCron</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+    
 		<extension point="cerberusweb.mail_filter.action">
 			<id>answernet.er.metlife.id.filter.action.copy</id>
 			<name>Action: Copy Values from Metlife forms to Custom Field</name>
