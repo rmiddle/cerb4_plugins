@@ -31,7 +31,7 @@
       <id>answernet.er.metlife.id.cron</id>
       <name>Answernet Metlife Cron Config.</name>
       <class>
-        <file>app/cron.php</file>
+        <file>app/report_dr.php</file>
         <name>AnswernetMetlifeCron</name>
       </class>
       <params>

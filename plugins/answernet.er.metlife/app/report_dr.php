@@ -47,6 +47,10 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		$db = DevblocksPlatform::getDatabaseService();
 		$translate = DevblocksPlatform::getTranslationService();
 
+    if ($RunFromCron) {
+      $logger = DevblocksPlatform::getConsoleLog();
+    }
+
     $radius = 12;
     $start_time = 0;
     date_default_timezone_set('Etc/UTC');
@@ -68,22 +72,38 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 		if (empty($start_time) || !is_numeric($start_time)) {
       return;
     }
-    print '<br><br><br>';
-    
+
     $start_ofday = mktime(0, 0, 0, date("m", $start_time), date("d", $start_time), date("Y", $start_time));
     $end_ofday = $start_ofday + 86400;
-    print $translate->_('answernet.er.metlife.report.dr.date.from.text');
-    print date(" Y-m-d H:i:s ", $start_ofday);    
-    print $translate->_('answernet.er.metlife.report.dr.date.to.text');
-    print date(" Y-m-d H:i:s T", $end_ofday);    
-    print '<br>';
-    print $translate->_('answernet.er.metlife.generate.report');
+
+    if ($RunFromCron) {
+      $logger->info("[Answernet.com] Gerating the Metlife DR Report.");
+      $logger->info("[Answernet.com] " .
+        $translate->_('answernet.er.metlife.report.dr.date.from.text') .
+        date(" Y-m-d H:i:s ", $start_ofday) .
+        $translate->_('answernet.er.metlife.report.dr.date.to.text') .
+        date(" Y-m-d H:i:s T", $end_ofday)
+        );
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.generate.report'));
+    } else {
+      print '<br><br><br>';
+      print $translate->_('answernet.er.metlife.report.dr.date.from.text');
+      print date(" Y-m-d H:i:s ", $start_ofday);    
+      print $translate->_('answernet.er.metlife.report.dr.date.to.text');
+      print date(" Y-m-d H:i:s T", $end_ofday);    
+      print '<br>';
+      print $translate->_('answernet.er.metlife.generate.report');
+    }
 
     $filename = "report-metlife-dr-" . date("Ymd", $start_time) . ".xls";
     $full_filename = getcwd().'/storage/answernet/'.$filename;
 
-    print '<br>';
-    print $translate->_('answernet.er.metlife.generating');
+    if ($RunFromCron) {
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.generating'));
+    } else {
+      print '<br>';
+      print $translate->_('answernet.er.metlife.generating');
+    }
 
     // Create new Excel Spreadsheet.
     $workbook = new Spreadsheet_Excel_Writer($full_filename);
@@ -245,9 +265,14 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $worksheet_transaction->write(0, 9, 'Nates (email body)', $format_general_title);
     $worksheet_transaction->write(0, 10, 'Ticket Mask', $format_general_title);
 
-    print $translate->_('answernet.er.metlife.metlife.done');
-    print '<br>';
-    print $translate->_('answernet.er.metlife.generating.dr.daily.report');
+    if ($RunFromCron) {
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.metlife.done'));
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.generating.dr.daily.report'));
+    } else {
+      print $translate->_('answernet.er.metlife.metlife.done');
+      print '<br>';
+      print $translate->_('answernet.er.metlife.generating.dr.daily.report');
+    }
 
 //SELECT t.id, t.mask, t.created_date ticket_created_date, mc.content, t.is_closed 
 //FROM ticket t 
@@ -324,9 +349,14 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 			$rs->MoveNext();
 		}
 
-    print $translate->_('answernet.er.metlife.metlife.done');
-    print '<br>';
-    print $translate->_('answernet.er.metlife.generating.dr.transaction.report');
+    if ($RunFromCron) {
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.metlife.done'));
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.generating.dr.transaction.report'));
+    } else {
+      print $translate->_('answernet.er.metlife.metlife.done');
+      print '<br>';
+      print $translate->_('answernet.er.metlife.generating.dr.transaction.report');
+    }
 
 //SELECT t.mask, t.created_date ticket_created_date,
 //m.created_date message_created_date, mc.content,  
@@ -404,9 +434,14 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
       $rs->MoveNext();
     }
 
-    print $translate->_('answernet.er.metlife.metlife.done');
-    print '<br>';
-    print $translate->_('answernet.er.metlife.generating.dr.monthly.report');
+    if ($RunFromCron) {
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.metlife.done'));
+      $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.generating.dr.monthly.report'));
+    } else {
+      print $translate->_('answernet.er.metlife.metlife.done');
+      print '<br>';
+      print $translate->_('answernet.er.metlife.generating.dr.monthly.report');
+    }
 
 /*
     print $translate->_('answernet.er.metlife.metlife.done');
@@ -462,6 +497,127 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $workbook->close();
     return $filename;
 	}
-
 };
+
+class AnswernetMetlifeCron extends CerberusCronPageExtension {
+  const EXTENSION_ID = 'answernet.er.metlife.id.cron';
+
+  function run() {
+    $logger = DevblocksPlatform::getConsoleLog();
+    $logger->info("[Answernet.com] Running Metlife DR report and emailing it.");
+ 
+    @ini_set('memory_limit','64M');
+ 
+    $filename = AnswernetMetlifeReportGroupReportDR::AnswernetMetlifeReportDRReport(1);
+    $full_filename = getcwd().'/storage/answernet/'.$filename;
+    
+    $logger->info("[Answernet.com] filename = ".$filename);
+    $logger->info("[Answernet.com] full_filename = ".$full_filename);
+
+    self::SendReport($full_filename, $filename);
+
+    $logger->info("[Answernet.com] Finished processing Metlife DR report.");
+  }
+ 
+  function configure($instance) {
+    $tpl = DevblocksPlatform::getTemplateService();
+    $tpl->cache_lifetime = "0";
+    $tpl_path = dirname(dirname(__FILE__)) . '/templates/';
+    $tpl->assign('path', $tpl_path);
+
+    $tpl->assign('answernet_email01', $this->getParam('answernet_email01', ''));
+    $tpl->assign('answernet_email02', $this->getParam('answernet_email02', ''));
+    $tpl->assign('answernet_email03', $this->getParam('answernet_email03', ''));
+    $tpl->assign('answernet_email04', $this->getParam('answernet_email04', ''));
+    $tpl->assign('answernet_email05', $this->getParam('answernet_email05', ''));
+
+    $tpl->display($tpl_path . 'cron.tpl');
+  }
+ 
+  function saveConfigurationAction() {
+    @$answernet_email01 = DevblocksPlatform::importGPC($_POST['answernet_email01'],'string','');
+    @$answernet_email02 = DevblocksPlatform::importGPC($_POST['answernet_email02'],'string','');
+    @$answernet_email03 = DevblocksPlatform::importGPC($_POST['answernet_email03'],'string','');
+    @$answernet_email04 = DevblocksPlatform::importGPC($_POST['answernet_email04'],'string','');
+    @$answernet_email05 = DevblocksPlatform::importGPC($_POST['answernet_email05'],'string','');
+    $this->setParam('answernet_email01', $answernet_email01);
+    $this->setParam('answernet_email02', $answernet_email02);
+    $this->setParam('answernet_email03', $answernet_email03);
+    $this->setParam('answernet_email04', $answernet_email04);
+    $this->setParam('answernet_email05', $answernet_email05);
+  }
+
+  function SendReport($full_filename, $filename) {
+    $logger = DevblocksPlatform::getConsoleLog();
+
+    $from = 'support@myfirstperson.com';
+    $personal = 'First Person';
+    $subject = 'DR Metlife Report Generated on ' . date("n/j/y");;
+    $mail_headers = array();
+    $mail_headers['X-CerberusCompose'] = '1';
+    $toList = NULL;
+    $abort = true;
+
+    @$answernet_email01 = $this->getParam('answernet_email01', NULL);    
+    @$answernet_email02 = $this->getParam('answernet_email02', NULL);    
+    @$answernet_email03 = $this->getParam('answernet_email03', NULL);    
+    @$answernet_email04 = $this->getParam('answernet_email04', NULL);    
+    @$answernet_email05 = $this->getParam('answernet_email05', NULL);    
+
+    if ($answernet_email01 != '') {
+      $logger->info("[Answernet.com] answernet_email01 = ".$answernet_email01);
+      $toList = $answernet_email01;
+      $abort = false;
+    }
+    if ($answernet_email02 != '') {
+      $logger->info("[Answernet.com] answernet_email02 = ".$answernet_email02);
+      if (!is_null($toList)) { $toList .= ","; }
+      $toList .= $answernet_email02;
+      $abort = false;
+    }
+    if ($answernet_email03 != '') {
+      $logger->info("[Answernet.com] answernet_email03 = ".$answernet_email03);
+      if (!is_null($toList)) { $toList .= ","; }
+      $toList .= $answernet_email03;
+      $abort = false;
+    }
+    if ($answernet_email04 != '') {
+      $logger->info("[Answernet.com] answernet_email04 = ".$answernet_email04);
+      if (!is_null($toList)) { $toList .= ","; }
+      $toList .= $answernet_email04;
+      $abort = false;
+    }
+    if ($answernet_email05 != '') {
+      $logger->info("[Answernet.com] answernet_email05 = ".$answernet_email05);
+      if (!is_null($toList)) { $toList .= ","; }
+      $toList .= $answernet_email05;
+      $abort = false;
+    }
+
+    if ($abort) {
+      $logger->info("[Answernet.com] Aborting email send.");
+      return;
+    }
+    $logger->info("[Answernet.com] toList = ".$toList);
+
+    $files['name']['0'] = $filename;
+    $files['type']['0'] = 'application/vnd.ms-excel';
+    $files['tmp_name']['0'] = $full_filename;
+
+    $properties = array(
+      'team_id' => 1721,
+//      'team_id' => 584,
+      'content' => "Metlife DR report attached",
+      'subject' => $subject,
+      'closed' => 1,
+      'agent_id' => 0,
+      'to' => $toList,
+      'files' => $files
+      );
+    $ticket_id = CerberusMail::compose($properties);
+    $logger->info("[Answernet.com] ticket_id = ".$ticket_id);
+    return;
+  }
+};
+
 endif;
