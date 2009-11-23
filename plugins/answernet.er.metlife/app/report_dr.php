@@ -27,14 +27,25 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 	}
 
   function AnswernetMetlifeReportDRAction() {
-      self::AnswernetMetlifeReportDRReport())
-      
+    $translate = DevblocksPlatform::getTranslationService();
+    $url = DevblocksPlatform::getUrlService();
+
+    $filename = self::AnswernetMetlifeReportDRReport(0);
+    $full_filename = getcwd().'/storage/answernet/'.$filename;
+    $href_filename = $url->write('storage/answernet/'.$filename, true);
+
+    print $translate->_('answernet.er.metlife.metlife.done');
+    print '<br>';
+    print $translate->_('answernet.er.metlife.generating');
+    print $translate->_('answernet.er.metlife.metlife.done');
+    print '<br><br>';
+    print '<b><a href=' . $href_filename . '>' . $translate->_('answernet.er.metlife.download.xls') . '</a></b>';
+    print '<br><br>';
   }
 
-	function AnswernetMetlifeReportDRReport() {
+	function AnswernetMetlifeReportDRReport($RunFromCron = 0) {
 		$db = DevblocksPlatform::getDatabaseService();
 		$translate = DevblocksPlatform::getTranslationService();
-    $url = DevblocksPlatform::getUrlService();
 
     $radius = 12;
     $start_time = 0;
@@ -69,11 +80,10 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     print $translate->_('answernet.er.metlife.generate.report');
 
     $filename = "report-metlife-dr-" . date("Ymd", $start_time) . ".xls";
+    $full_filename = getcwd().'/storage/answernet/'.$filename;
+
     print '<br>';
     print $translate->_('answernet.er.metlife.generating');
-
-		$full_filename = getcwd().'/storage/answernet/'.$filename;
-    $href_filename = $url->write('storage/answernet/'.$filename, true);
 
     // Create new Excel Spreadsheet.
     $workbook = new Spreadsheet_Excel_Writer($full_filename);
@@ -450,16 +460,8 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $worksheet_out_count->writeFormula(1, 6, "=SUM(B2,E2)", $format_general);
 */
     $workbook->close();
-    print $translate->_('answernet.er.metlife.metlife.done');
-    print '<br>';
-    print $translate->_('answernet.er.metlife.generating');
-		print $translate->_('answernet.er.metlife.metlife.done');
-		print '<br><br>';
-		print '<b><a href=' . $href_filename . '>' . $translate->_('answernet.er.metlife.download.xls') . '</a></b>';
-		print '<br><br>';
+    return $filename;
 	}
 
 };
 endif;
-
-?>

@@ -8,42 +8,55 @@
     <tu tuid='answernet.last_action_and_audit_log.success'>
       <tuv xml:lang="en_US"><seg>Saved Successfully</seg></tuv>
     </tu>
+    <tu tuid='answernet.last_action_and_audit_log.no'>
+      <tuv xml:lang="en_US"><seg>No</seg></tuv>
+    </tu>
 
-    <!-- Choice of Update Option inside the config -->
-    <tu tuid='answernet.last_action_and_audit_log.config.tab.default'>
-      <tuv xml:lang="en_US"><seg>Do Nothing (default).</seg></tuv>
-    </tu>
-    <tu tuid='answernet.last_action_and_audit_log.config.tab.update'>
-      <tuv xml:lang="en_US"><seg>Modify the timestamp in ticket Updated field.</seg></tuv>
-    </tu>
-    <tu tuid='answernet.last_action_and_audit_log.config.tab.custom.field'>
-      <tuv xml:lang="en_US"><seg>Update a custom ticket field with a timestamp.</seg></tuv>
-    </tu>
     <!-- Title Section -->
-    <tu tuid='answernet.last_action_and_audit_log.config.tab.comment'>
-      <tuv xml:lang="en_US"><seg>Comments</seg></tuv>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.audit.log'>
+      <tuv xml:lang="en_US"><seg>Audit Log Options:</seg></tuv>
     </tu>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.ticket.update.field'>
+      <tuv xml:lang="en_US"><seg>Update Date / Time Field Options:</seg></tuv>
+    </tu>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.ticket.custom.field'>
+      <tuv xml:lang="en_US"><seg>Update Custom Fields:</seg></tuv>
+    </tu>
+
     <!-- Choice of Audit Log Option inside the config -->
-    <tu tuid='answernet.last_action_and_audit_log.config.tab.comment.audit'>
-      <tuv xml:lang="en_US"><seg>Enable Audit Log:</seg></tuv>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.audit.comment'>
+      <tuv xml:lang="en_US"><seg>Record when a Comment is posted?</seg></tuv>
     </tu>
-    <!-- Choice of Last Action Option inside the config -->
-    <tu tuid='answernet.last_action_and_audit_log.config.tab.comment.last_action'>
-      <tuv xml:lang="en_US"><seg>When posted: </seg></tuv>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.audit.merge.new_ticket'>
+      <tuv xml:lang="en_US"><seg>Record "Merged from ticket #123 - Mask #xyz" in the combined ticket with all the old ticket numbers when it is merged?</seg></tuv>
     </tu>
 
     <!-- Text for Audit Log Types -->
     <tu tuid='answernet.last_action_and_audit_log.type.comment'>
       <tuv xml:lang="en_US"><seg>Comment Posted</seg></tuv>
     </tu>
+    <tu tuid='answernet.last_action_and_audit_log.type.merge'>
+      <tuv xml:lang="en_US"><seg>Ticket Merged</seg></tuv>
+    </tu>
+
+    <!-- Text for Audit Log Posts -->
+    <tu tuid='answernet.last_action_and_audit_log.post.merge.new_ticket'>
+      <tuv xml:lang="en_US"><seg>Merged from ticket # %d - Mask # %s</seg></tuv>
+    </tu>
+
+    <!-- Choice of Last Action Option inside the config -->
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.update.comment'>
+      <tuv xml:lang="en_US"><seg>Update when a Comment is posted?</seg></tuv>
+    </tu>
+    <tu tuid='answernet.last_action_and_audit_log.config.tab.update.merge'>
+      <tuv xml:lang="en_US"><seg>Update when a ticket is merged?</seg></tuv>
+    </tu>
+
 
     <!-- Error -->
-    <tu tuid='answernet.last_action_and_audit_log.error.enable'>
-      <tuv xml:lang="en_US"><seg>You must enable "[Answernet.com] Utililty Functions" in order to use this Plug-in.</seg></tuv>
-    </tu>
 
 </body>
 </tmx>
 <!--
-@joe did you think my question to Hildy@WGM was going to be easy.
+
 -->

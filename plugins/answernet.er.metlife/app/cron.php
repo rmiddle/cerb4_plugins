@@ -9,6 +9,12 @@ class AnswernetMetlifeCron extends CerberusCronPageExtension {
  
     @ini_set('memory_limit','64M');
  
+    $filename = AnswernetMetlifeReportGroupReportDR::AnswernetMetlifeReportDRReport(1);
+    $full_filename = getcwd().'/storage/answernet/'.$filename;
+    
+    $logger->info("[Answernet.com] filename = ".$filename);
+    $logger->info("[Answernet.com] full_filename = ".$full_filename);
+
     @$answernet_email01 = $this->getParam('answernet_email01', NULL);    
     @$answernet_email02 = $this->getParam('answernet_email02', NULL);    
     @$answernet_email03 = $this->getParam('answernet_email03', NULL);    
