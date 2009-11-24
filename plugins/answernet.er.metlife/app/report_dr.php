@@ -108,15 +108,20 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     // Create new Excel Spreadsheet.
     $workbook = new Spreadsheet_Excel_Writer($full_filename);
 
-    // Create monthly Tab and set Column Width and Row Hight.
-    $worksheet_monthly =& $workbook->addWorksheet('Month DR Summary');
-    $worksheet_monthly->setColumn(0, 0, $radius*2.46);
-    $worksheet_monthly->setColumn(1, 1, $radius*.47);
-    $worksheet_monthly->setColumn(2, 2, $radius*.63);
-    $worksheet_monthly->setColumn(3, 3, $radius*.69);
-    $worksheet_monthly->setColumn(4, 4, $radius*.69);
-    $worksheet_monthly->setColumn(5, 5, $radius*.69);
-//    $worksheet_monthly->setRow(0, 56);
+    // Create Open Status Tab and set Column Width and Row Hight.
+    $worksheet_transaction=& $workbook->addWorksheet('Transaction Report');
+    $worksheet_transaction->setColumn(0, 0, $radius*0.85);
+    $worksheet_transaction->setColumn(1, 1, $radius*0.85);
+    $worksheet_transaction->setColumn(2, 2, $radius*0.35);
+    $worksheet_transaction->setColumn(3, 3, $radius*1.65);
+    $worksheet_transaction->setColumn(4, 4, $radius*1.85);
+    $worksheet_transaction->setColumn(5, 5, $radius*1.16);
+    $worksheet_transaction->setColumn(6, 6, $radius*2.60);
+    $worksheet_transaction->setColumn(7, 8, $radius*0.87);
+    $worksheet_transaction->setColumn(9, 9, $radius*3.28);
+    $worksheet_transaction->setColumn(10, 10, $radius*1.34);
+//    $worksheet_open_status->setRow(0, 28);
+//    $worksheet_open_status->setRow(2, 32);
 
     // Create Open Status Tab and set Column Width and Row Hight.
     $worksheet_open_status =& $workbook->addWorksheet('Open DR Report');
@@ -133,20 +138,15 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
 //    $worksheet_open_status->setRow(0, 28);
 //    $worksheet_open_status->setRow(2, 32);
 
-    // Create Open Status Tab and set Column Width and Row Hight.
-    $worksheet_transaction=& $workbook->addWorksheet('Transaction Report');
-    $worksheet_transaction->setColumn(0, 0, $radius*0.85);
-    $worksheet_transaction->setColumn(1, 1, $radius*0.85);
-    $worksheet_transaction->setColumn(2, 2, $radius*0.35);
-    $worksheet_transaction->setColumn(3, 3, $radius*1.65);
-    $worksheet_transaction->setColumn(4, 4, $radius*1.85);
-    $worksheet_transaction->setColumn(5, 5, $radius*1.16);
-    $worksheet_transaction->setColumn(6, 6, $radius*2.60);
-    $worksheet_transaction->setColumn(7, 8, $radius*0.87);
-    $worksheet_transaction->setColumn(9, 9, $radius*3.28);
-    $worksheet_transaction->setColumn(10, 10, $radius*1.34);
-//    $worksheet_open_status->setRow(0, 28);
-//    $worksheet_open_status->setRow(2, 32);
+    // Create monthly Tab and set Column Width and Row Hight.
+    $worksheet_monthly =& $workbook->addWorksheet('Month DR Summary');
+    $worksheet_monthly->setColumn(0, 0, $radius*2.46);
+    $worksheet_monthly->setColumn(1, 1, $radius*.47);
+    $worksheet_monthly->setColumn(2, 2, $radius*.63);
+    $worksheet_monthly->setColumn(3, 3, $radius*.69);
+    $worksheet_monthly->setColumn(4, 4, $radius*.69);
+    $worksheet_monthly->setColumn(5, 5, $radius*.69);
+//    $worksheet_monthly->setRow(0, 56);
 
 // Formats used thoughout the workbook.
     $format_general =& $workbook->addFormat();
@@ -177,7 +177,33 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $format_monthly_title->setTextWrap();
     $format_monthly_title->setAlign('merge');
 
-    // Added headers since they never change in the Metics Group.
+// Added headers since they never change in the transaction Group.
+    $worksheet_transaction->write(0, 0, 'Status', $format_general_title);
+    $worksheet_transaction->write(0, 1, 'Due Date', $format_general_title);
+    $worksheet_transaction->write(0, 2, 'SLA', $format_general_title);
+    $worksheet_transaction->write(0, 3, 'Date Received', $format_general_title);
+    $worksheet_transaction->write(0, 4, 'RM Name', $format_general_title);
+    $worksheet_transaction->write(0, 5, 'RM Employee id', $format_general_title);
+    $worksheet_transaction->write(0, 6, 'Request Type', $format_general_title);
+    $worksheet_transaction->write(0, 7, 'MetLife Staff', $format_general_title);
+    $worksheet_transaction->write(0, 8, 'New Hire', $format_general_title);
+    $worksheet_transaction->write(0, 9, 'Nates (email body)', $format_general_title);
+    $worksheet_transaction->write(0, 10, 'Ticket Mask', $format_general_title);
+
+// Added headers since they never change in the Open Status Group.
+    $worksheet_open_status->write(0, 0, 'Due Date', $format_general_title);
+    $worksheet_open_status->write(0, 1, 'SLA', $format_general_title);
+    $worksheet_open_status->write(0, 2, 'Overdue', $format_general_title);
+    $worksheet_open_status->write(0, 3, 'Date Received', $format_general_title);
+    $worksheet_open_status->write(0, 4, 'RM Name', $format_general_title);
+    $worksheet_open_status->write(0, 5, 'RM Employee id', $format_general_title);
+    $worksheet_open_status->write(0, 6, 'Request Type', $format_general_title);
+    $worksheet_open_status->write(0, 7, 'MetLife Staff', $format_general_title);
+    $worksheet_open_status->write(0, 8, 'New Hire', $format_general_title);
+    $worksheet_open_status->write(0, 9, 'Nates (email body)', $format_general_title);
+    $worksheet_open_status->write(0, 10, 'Ticket Mask', $format_general_title);
+
+// Added headers since they never change in the monthly Group.
     $month_text = date("F-y", $start_time);
     $worksheet_monthly->write(0, 0, $month_text, $format_monthly_title);
     $worksheet_monthly->write(0, 1, '', $format_monthly_title);
@@ -238,32 +264,6 @@ class AnswernetMetlifeReportGroupReportDR extends Extension_Report {
     $worksheet_monthly->write(33, 0, 'Other', $format_general);
     $worksheet_monthly->write(34, 0, 'Avgerage', $format_general_title);
     $worksheet_monthly->write(34, 1, '', $format_general_title);
-
-// Added headers since they never change in the acd in Group.
-    $worksheet_open_status->write(0, 0, 'Due Date', $format_general_title);
-    $worksheet_open_status->write(0, 1, 'SLA', $format_general_title);
-    $worksheet_open_status->write(0, 2, 'Overdue', $format_general_title);
-    $worksheet_open_status->write(0, 3, 'Date Received', $format_general_title);
-    $worksheet_open_status->write(0, 4, 'RM Name', $format_general_title);
-    $worksheet_open_status->write(0, 5, 'RM Employee id', $format_general_title);
-    $worksheet_open_status->write(0, 6, 'Request Type', $format_general_title);
-    $worksheet_open_status->write(0, 7, 'MetLife Staff', $format_general_title);
-    $worksheet_open_status->write(0, 8, 'New Hire', $format_general_title);
-    $worksheet_open_status->write(0, 9, 'Nates (email body)', $format_general_title);
-    $worksheet_open_status->write(0, 10, 'Ticket Mask', $format_general_title);
-
-// Added headers since they never change in the acd in Group.
-    $worksheet_transaction->write(0, 0, 'Status', $format_general_title);
-    $worksheet_transaction->write(0, 1, 'Due Date', $format_general_title);
-    $worksheet_transaction->write(0, 2, 'SLA', $format_general_title);
-    $worksheet_transaction->write(0, 3, 'Date Received', $format_general_title);
-    $worksheet_transaction->write(0, 4, 'RM Name', $format_general_title);
-    $worksheet_transaction->write(0, 5, 'RM Employee id', $format_general_title);
-    $worksheet_transaction->write(0, 6, 'Request Type', $format_general_title);
-    $worksheet_transaction->write(0, 7, 'MetLife Staff', $format_general_title);
-    $worksheet_transaction->write(0, 8, 'New Hire', $format_general_title);
-    $worksheet_transaction->write(0, 9, 'Nates (email body)', $format_general_title);
-    $worksheet_transaction->write(0, 10, 'Ticket Mask', $format_general_title);
 
     if ($RunFromCron) {
       $logger->info("[Answernet.com] " . $translate->_('answernet.er.metlife.metlife.done'));
