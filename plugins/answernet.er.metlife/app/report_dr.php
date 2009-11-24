@@ -613,11 +613,11 @@ class AnswernetMetlifeCron extends CerberusCronPageExtension {
     $files['tmp_name']['0'] = $full_filename;
 
     $properties = array(
-      'team_id' => 1721,
+      'team_id' => 1771,
 //      'team_id' => 584,
       'content' => "Metlife DR report attached",
       'subject' => $subject,
-      'closed' => 1,
+      'closed' => 0,
       'agent_id' => 0,
       'to' => $toList,
       'files' => $files
