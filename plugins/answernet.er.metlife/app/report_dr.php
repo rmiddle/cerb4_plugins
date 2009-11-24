@@ -503,10 +503,18 @@ class AnswernetMetlifeCron extends CerberusCronPageExtension {
   const EXTENSION_ID = 'answernet.er.metlife.id.cron';
 
   function run() {
+    date_default_timezone_set('Etc/UTC');
+    $run_date = $this->getParam('rundate', 0);
+
+    if (date("j") == $run_date) {
+      return;
+    }
+    $this->setParam('rundate', date("j"));
+
+    @ini_set('memory_limit','128M');
+ 
     $logger = DevblocksPlatform::getConsoleLog();
     $logger->info("[Answernet.com] Running Metlife DR report and emailing it.");
- 
-    @ini_set('memory_limit','64M');
  
     $filename = AnswernetMetlifeReportGroupReportDR::AnswernetMetlifeReportDRReport(1);
     $full_filename = getcwd().'/storage/answernet/'.$filename;
