@@ -15,7 +15,7 @@ class HeaderFilterCopyAction extends Extension_MailFilterAction {
 		$params = $filter->actions[self::EXTENSION_ID];
 		$headers = $params['headers'];
 		$custom_fields = $params['custom_fields'];
- 
+print_r($custom_fields);
 		foreach($headers as $idx => $header) {
 			if($message_headers[strtolower($header)] != null) {
 				$header_value = $message_headers[strtolower($header)];

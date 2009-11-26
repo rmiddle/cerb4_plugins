@@ -10,17 +10,37 @@
 <input type="hidden" name="tab" value="answernet.last_action_and_audit_log.config.tab">
 <input type="hidden" name="action" value="saveAnswernet">
 
-<h2>{$translate->_('answernet.last_action_and_audit_log.config.tab.comment')}</h2><br>
-{$translate->_('answernet.last_action_and_audit_log.config.tab.comment.audit')}
-<label><input type="radio" name="enabled_comments" value="1" {if $enabled_comments}checked="checked"{/if}> Enabled</label>
-<label><input type="radio" name="enabled_comments" value="0" {if !$enabled_comments}checked="checked"{/if}> Disabled</label>
+<h2>{$translate->_('answernet.last_action_and_audit_log.config.tab.audit.log')}</h2><br>
+
+{$translate->_('answernet.last_action_and_audit_log.config.tab.audit.comment')}<br>
+<label><input type="radio" name="al_comment_enabled" value="1" {if $al_comment_enabled}checked="checked"{/if}> {$translate->_('common.yes')|capitalize}</label>
+<label><input type="radio" name="al_comment_enabled" value="0" {if !$al_comment_enabled}checked="checked"{/if}> {$translate->_('answernet.last_action_and_audit_log.no')}</label>
 <br>
 
-{$translate->_('answernet.last_action_and_audit_log.config.tab.comment.last_action')} <select name="update_comment">
-  <option value="0" {if $update_comment==0}selected="selected"{/if}>{$translate->_('answernet.last_action_and_audit_log.config.tab.default')}</option>
-  <option value="1" {if $update_comment==1}selected="selected"{/if}>{$translate->_('answernet.last_action_and_audit_log.config.tab.update')}</option>
-  <option value="2" {if $update_comment==2}selected="selected"{/if}>{$translate->_('answernet.last_action_and_audit_log.config.tab.custom.field')}</option>
-</select>
+{$translate->_('answernet.last_action_and_audit_log.config.tab.audit.merge.new_ticket')}<br>
+<label><input type="radio" name="al_merge_enabled" value="1" {if $al_merge_enabled}checked="checked"{/if}> {$translate->_('common.yes')|capitalize}</label>
+<label><input type="radio" name="al_merge_enabled" value="0" {if !$al_merge_enabled}checked="checked"{/if}> {$translate->_('answernet.last_action_and_audit_log.no')}</label>
+<br>
+
+<br>
+<br>
+<h2>{$translate->_('answernet.last_action_and_audit_log.config.tab.ticket.update.field')}</h2><br>
+
+{$translate->_('answernet.last_action_and_audit_log.config.tab.update.comment')}<br>
+<label><input type="radio" name="uf_comment_enabled" value="1" {if $uf_comment_enabled}checked="checked"{/if}> {$translate->_('common.yes')|capitalize}</label>
+<label><input type="radio" name="uf_comment_enabled" value="0" {if !$uf_comment_enabled}checked="checked"{/if}> {$translate->_('answernet.last_action_and_audit_log.no')}</label>
+<br>
+
+{$translate->_('answernet.last_action_and_audit_log.config.tab.update.merge')}<br>
+<label><input type="radio" name="uf_merge_enabled" value="1" {if $uf_merge_enabled}checked="checked"{/if}> {$translate->_('common.yes')|capitalize}</label>
+<label><input type="radio" name="uf_merge_enabled" value="0" {if !$uf_merge_enabled}checked="checked"{/if}> {$translate->_('answernet.last_action_and_audit_log.no')}</label>
+<br>
+
+{*
+<br>
+<br>
+<h2>{$translate->_('answernet.last_action_and_audit_log.config.tab.ticket.custom.field')}</h2><br>
+*}
 <br>
 <br>
 <button type="button" id="btnSubmit" onclick="genericAjaxPost('configActivity', 'feedback');"><img src="{devblocks_url}c=resource&p=cerberusweb.core&f=images/check.gif{/devblocks_url}" align="top"> {$translate->_('common.save_changes')|capitalize}</button>

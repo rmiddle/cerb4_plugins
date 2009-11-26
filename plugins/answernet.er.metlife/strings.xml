@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.0">
+	<header datatype="winres" segtype="sentence" adminlang="en-us"
+		srclang="en-us" o-tmf="abc" />
+	<body>
+
+		<!-- ACL -->
+
+		<tu tuid='answernet.er.metlife.report.acl.text'>
+			<tuv xml:lang="en_US"><seg>[Report Group] Can view the Metlife Reports</seg></tuv>
+		</tu>
+
+		<!-- Email Response MetLife Reports -->
+
+		<tu tuid='answernet.er.metlife.report1.text'>
+			<tuv xml:lang="en_US"><seg>Answernet Metlife Report #1</seg></tuv>
+		</tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.text'>
+      <tuv xml:lang="en_US"><seg>Answernet Metlife DR Report (Testing)</seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.daily.text'>
+      <tuv xml:lang="en_US"><seg>MetLife Daily DR Report Date:</seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.generating.dr.daily.report'>
+      <tuv xml:lang="en_US"><seg>Generate Daily Tab of the report. </seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.generating.dr.transaction.report'>
+      <tuv xml:lang="en_US"><seg>Generate Transaction Tab of the report. </seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.generating.dr.monthly.report'>
+      <tuv xml:lang="en_US"><seg>Generate Transaction Tab of the report. </seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.date.from.text'>
+      <tuv xml:lang="en_US"><seg>Creating report from</seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.report.dr.date.to.text'>
+      <tuv xml:lang="en_US"><seg>to</seg></tuv>
+    </tu>
+
+    <tu tuid='answernet.er.metlife.generate.report'>
+      <tuv xml:lang="en_US"><seg>Starting Generating Report</seg></tuv>
+    </tu>
+
+		<tu tuid='answernet.er.metlife.download.xls'>
+			<tuv xml:lang="en_US"><seg>Click here to download the Excel file</seg></tuv>
+		</tu>
+
+		<tu tuid='answernet.er.metlife.week.number'>
+			<tuv xml:lang="en_US"><seg>Week Number:</seg></tuv>
+		</tu>
+
+    <tu tuid='answernet.er.metlife.metlife.done'>
+			<tuv xml:lang="en_US"><seg>Done.</seg></tuv>
+		</tu>
+
+		<tu tuid='answernet.er.metlife.report1'>
+			<tuv xml:lang="en_US"><seg>MetLife Answernet Report One</seg></tuv>
+		</tu>
+
+		<tu tuid='answernet.er.metlife.generating'>
+			<tuv xml:lang="en_US"><seg>Generating Metlife Report: </seg></tuv>
+		</tu>
+
+    <tu tuid='answernet.er.metlife.generating.template'>
+      <tuv xml:lang="en_US"><seg>Generating Metlife Excel Template: </seg></tuv>
+    </tu>
+    <tu tuid='answernet.er.metlife.generating.email.detail'>
+      <tuv xml:lang="en_US"><seg>Generating Metlife Email Details: </seg></tuv>
+    </tu>
+    <tu tuid='answernet.er.metlife.generating.email.count'>
+      <tuv xml:lang="en_US"><seg>Generating Metlife Email Counts: </seg></tuv>
+    </tu>
+	</body>
+</tmx>
+<!--
+
+-->
