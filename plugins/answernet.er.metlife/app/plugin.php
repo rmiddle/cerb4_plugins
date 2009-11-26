@@ -1,10 +1,5 @@
 <?php
 
-class AnswernetMetlifePlugin extends DevblocksPlugin {
-  function load(DevblocksPluginManifest $manifest) {
-  }
-};
-
 if (class_exists('DevblocksTranslationsExtension',true)):
   class AnswernetMetlifeTranslations extends DevblocksTranslationsExtension {
     function __construct($manifest) {

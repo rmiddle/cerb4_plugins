@@ -6,10 +6,6 @@
 	<author>Robert Middleswarth</author>
 	<revision>2</revision>
 	<link>http://answernet.com/</link>
-	<class>
-		<file>app/plugin.php</file>
-		<name>AnswernetMetlifePlugin</name>
-	</class>
 
   <acl>
     <priv id="answernet.er.metlife.report.acl" label="answernet.er.metlife.report.acl.text" />
