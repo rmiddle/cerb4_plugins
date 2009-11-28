@@ -505,7 +505,12 @@ class AnswernetMetlifeCron extends CerberusCronPageExtension {
   function run() {
     date_default_timezone_set('Etc/UTC');
     $run_date = $this->getParam('rundate', 0);
+    $logger = DevblocksPlatform::getConsoleLog();
+    $logger->info("[Answernet.com] Running Metlife DR report and emailing it.");
 
+    $logger->info("[Answernet.com] run_date = ".$run_date);
+    $logger->info("[Answernet.com] date('j') = ".date("j"));
+      
     if (date("j") == $run_date) {
       return;
     }
@@ -513,8 +518,6 @@ class AnswernetMetlifeCron extends CerberusCronPageExtension {
 
     @ini_set('memory_limit','128M');
  
-    $logger = DevblocksPlatform::getConsoleLog();
-    $logger->info("[Answernet.com] Running Metlife DR report and emailing it.");
  
     $filename = AnswernetMetlifeReportGroupReportDR::AnswernetMetlifeReportDRReport(1);
     $full_filename = getcwd().'/storage/answernet/'.$filename;
