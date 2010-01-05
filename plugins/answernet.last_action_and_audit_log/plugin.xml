@@ -6,10 +6,6 @@
 	<author>Robert Middleswarth</author>
 	<revision>7</revision>
 	<link>http://www.answernet.com</link>
-	<class>
-		<file>api/Plugin.php</file>
-		<name>AnswernetLastActionAndAuditLogPlugin</name>
-	</class>
 
 	<extensions>
     <!-- Patch Containers  -->
