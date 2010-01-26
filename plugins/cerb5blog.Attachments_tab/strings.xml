@@ -6,7 +6,7 @@
 	<body>
     <!-- Generic Text -->
     <tu tuid='cerb5blog.attachments_tab.ticket.tab'>
-      <tuv xml:lang="en_US"><seg>Attachements</seg></tuv>
+      <tuv xml:lang="en_US"><seg>Attachments</seg></tuv>
     </tu>
 
     <!-- Error -->
