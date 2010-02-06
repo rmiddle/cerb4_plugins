@@ -1,0 +1,70 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+	<id>cerb5blog.template_cf_tickets</id>
+	<name>[Cerb5blog] Custom Fields in Templates</name>
+	<description>Template items that allow you to replace text with variable data under templaces.</description>
+	<author>Robert Middleswarth</author>
+	<revision>0</revision>
+	<link>http://cerb5blog.com/project/template_cf_tickets</link>
+
+	<extensions>
+
+		<!-- Translations -->
+		<extension point="devblocks.i18n.strings">
+			<id>cerb5blog.templates.translations</id>
+			<name>[Cerb5blog] Custom Fields in Templates Strings</name>
+			<class>
+				<file>api/Plugin.php</file>
+				<name>Cerb5BlogCfTicketsTemplateTranslations</name>
+			</class>
+			<params>
+			</params>
+		</extension>
+
+		<extension point="cerberusweb.email_signature.template">
+      <id>cerb5blog.templates.email_signature</id>
+      <name>Custom Fields in Email Signature Templates</name>
+      <class>
+        <file>api/App.php</file>
+        <name>Cerb5BlogCfTicketsEmailSignatureTemplate</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+  
+    <extension point="cerberusweb.auto_reply.new">
+      <id>cerb5blog.templates.new</id>
+      <name>Custom Fields in New Templates</name>
+      <class>
+        <file>api/App.php</file>
+        <name>Cerb5BlogCfTicketsAutoReplyNew</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+  
+    <extension point="cerberusweb.auto_reply.close">
+      <id>cerb5blog.templates.close</id>
+      <name>Custom Fields in Close Templates</name>
+      <class>
+        <file>api/App.php</file>
+        <name>Cerb5BlogCfTicketsAutoReplyClose</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+	
+    <extension point="cerberusweb.email.template">
+      <id>cerb5blog.templates.email</id>
+      <name>Custom Fields in Email Templates</name>
+      <class>
+        <file>api/App.php</file>
+        <name>Cerb5BlogCfTicketsEmailTemplate</name>
+      </class>
+      <params>
+      </params>
+    </extension>
+  
+	</extensions>
+	
+</plugin>
