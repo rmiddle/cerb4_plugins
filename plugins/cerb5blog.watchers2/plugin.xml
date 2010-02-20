@@ -1,0 +1,106 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+	<id>cerb5blog.watchers2</id>
+	<name>[Cerb5Blog] Watchers 2.0</name>
+	<description>Create Watchers / Notifications when tickets and other parts of the system changes.  Includes an API so thing can be changed outside the code.</description>
+	<author>Robert Middleswarth based on code from WebGroup Media, LLC. (WGM)</author>
+	<revision>0</revision>
+	<link>http://cerb5blog.com/project/wachers2</link>
+
+	<class_loader>
+		<file path="api/App.php">
+			<class name="DAO_WorkerMailFilter" />
+			<class name="Model_WorkerMailFilter" />
+			<class name="SearchFields_WorkerMailFilter" />
+			<class name="C4_WatcherView" />
+		</file>
+		<file path="api/Plugin.php">
+			<class name="ChWatchersPlugin" />
+		</file>
+	</class_loader>
+	
+	<extensions>
+
+		<!-- Translations -->
+		
+		<extension point="devblocks.i18n.strings">
+			<id>watchers.translations</id>
+			<name>Watchers Strings</name>
+			<class>
+				<file>api/Plugin.php</file>
+				<name>ChWatchers2Translations</name>
+			</class>
+			<params>
+			</params>
+		</extension>
+
+		<!-- Patch Containers -->
+		
+		<extension point="devblocks.patch.container">
+			<id>watchers.patches</id>
+			<name>Watchers Patches</name>
+			<class>
+				<file>api/Patch.php</file>
+				<name>ChWatchersPatchContainer</name>
+			</class>
+			<params>
+			</params>
+		</extension>
+
+		<!-- Event Listeners -->
+		
+		<extension point="devblocks.listener.event">
+			<id>cerberusweb.listeners.watchers</id>
+			<name>Watchers Listener</name>
+			<class>
+				<file>api/App.php</file>
+				<name>ChWatchersEventListener</name>
+			</class>
+			<params>
+				<!-- E-mail Event Listener -->
+				<param key="events">
+					<value>
+						<data key="bucket.delete" />						
+						<data key="group.delete" />						
+						<data key="ticket.comment.create" />
+						<data key="ticket.property.pre_change" />
+						<data key="ticket.reply.inbound" />
+						<data key="ticket.reply.outbound" />						
+						<data key="worker.delete" />						
+					</value>
+				</param>
+			</params>
+		</extension>
+	
+		<!-- Preference Tabs  -->
+		
+		<extension point="cerberusweb.preferences.tab">
+			<id>core.pref.notifications</id>
+			<name>Watchers Preferences</name>
+			<class>
+				<file>api/App.php</file>
+				<name>ChWatchersPreferences</name>
+			</class>
+			<params>
+				<param key="uri" value="watchers" />
+				<param key="title" value="Watchers" />
+			</params>
+		</extension>
+		
+		<!-- Config Tabs -->
+		
+		<extension point="cerberusweb.config.tab">
+			<id>watchers.config.tab</id>
+			<name>Watchers Tab</name>
+			<class>
+				<file>api/App.php</file>
+				<name>ChWatchersConfigTab</name>
+			</class>
+			<params>
+				<param key="uri" value="watchers" />
+				<param key="title" value="Watchers" />
+			</params>
+		</extension>
+	
+	</extensions>
+</plugin>
