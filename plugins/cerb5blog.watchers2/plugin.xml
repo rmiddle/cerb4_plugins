@@ -14,9 +14,6 @@
 			<class name="SearchFields_WorkerMailFilter" />
 			<class name="C4_WatcherView" />
 		</file>
-		<file path="api/Plugin.php">
-			<class name="ChWatchersPlugin" />
-		</file>
 	</class_loader>
 	
 	<extensions>
@@ -24,11 +21,11 @@
 		<!-- Translations -->
 		
 		<extension point="devblocks.i18n.strings">
-			<id>watchers.translations</id>
-			<name>Watchers Strings</name>
+			<id>cerb5blog.watchers2.translations</id>
+			<name>Watchers2 Strings</name>
 			<class>
 				<file>api/Plugin.php</file>
-				<name>ChWatchers2Translations</name>
+				<name>Cerb5blogWatchers2Translations</name>
 			</class>
 			<params>
 			</params>
@@ -37,11 +34,11 @@
 		<!-- Patch Containers -->
 		
 		<extension point="devblocks.patch.container">
-			<id>watchers.patches</id>
+			<id>cerb5blog.watchers2.patches</id>
 			<name>Watchers Patches</name>
 			<class>
 				<file>api/Patch.php</file>
-				<name>ChWatchersPatchContainer</name>
+				<name>Cerb5blogWatchers2PatchContainer</name>
 			</class>
 			<params>
 			</params>
@@ -50,8 +47,8 @@
 		<!-- Event Listeners -->
 		
 		<extension point="devblocks.listener.event">
-			<id>cerberusweb.listeners.watchers</id>
-			<name>Watchers Listener</name>
+			<id>cerb5blog.listeners.watchers</id>
+			<name>Watchers2 Listener</name>
 			<class>
 				<file>api/App.php</file>
 				<name>ChWatchersEventListener</name>

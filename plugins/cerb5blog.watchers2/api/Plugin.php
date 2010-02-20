@@ -1,6 +1,6 @@
 <?php
 if (class_exists('DevblocksTranslationsExtension',true)):
-	class ChWatchersTranslations extends DevblocksTranslationsExtension {
+	class Cerb5blogWatchers2Translations extends DevblocksTranslationsExtension {
 		function __construct($manifest) {
 			parent::__construct($manifest);	
 		}
