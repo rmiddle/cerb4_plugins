@@ -96,7 +96,7 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 			$mail->setTo(array($notify_emails));
 			$mail->setFrom(array($reply_to => $reply_personal));
 			$mail->setReplyTo($reply_to);
-			$mail->setSubject(sprintf("[comment #%s]: %s [comment]",
+			$mail->setSubject(sprintf("[RW: comment #%s]: %s [comment]",
 				$ticket->mask,
 				$ticket->subject
 			));
@@ -213,7 +213,7 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 				$mail->setTo(array($notify_emails));
 				$mail->setFrom(array($reply_to => $reply_personal));
 				$mail->setReplyTo($reply_to);
-				$mail->setSubject(sprintf("[assignment #%s]: %s",
+				$mail->setSubject(sprintf("[RW: assignment #%s]: %s",
 					$ticket->mask,
 					$ticket->subject
 				));
@@ -330,7 +330,7 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 			$mail->setFrom(array($sender->email));
 			$mail->setReplyTo($reply_to);
 			$mail->setReturnPath($reply_to);
-			$mail->setSubject(sprintf("[%s #%s]: %s",
+			$mail->setSubject(sprintf("[RW: %s #%s]: %s",
 				($is_inbound ? 'inbound' : 'outbound'),
 				$ticket->mask,
 				$ticket->subject
