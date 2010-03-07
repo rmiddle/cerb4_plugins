@@ -59,7 +59,7 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 		// (Action) Forward E-mail:
 		
 		// Sanitize and combine all the destination addresses
-		$next_worker = getAgent($ticket->next_worker_id);
+		$next_worker = DAO_Worker::getAgent($ticket->next_worker_id);
 		$notify_emails = $next_worker->email;
 		
 		if(empty($notify_emails))
@@ -176,7 +176,7 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 			// (Action) Forward Email To:
 
 			// Sanitize and combine all the destination addresses
-			$next_worker = getAgent($ticket->next_worker_id);
+			$next_worker = DAO_Worker::getAgent($ticket->next_worker_id);
 			$notify_emails = $next_worker->email;
 			
 			if(empty($notify_emails))
@@ -259,7 +259,7 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 		// (Action) Forward Email To:
 		
 		// Sanitize and combine all the destination addresses
-		$next_worker = getAgent($ticket->next_worker_id);
+		$next_worker = DAO_Worker::getAgent($ticket->next_worker_id);
 		$notify_emails = $next_worker->email;
 			
 		if(empty($notify_emails))
