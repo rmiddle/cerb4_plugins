@@ -1,5 +1,5 @@
 <?php
-class Cerb5blogWatchersEventListener extends DevblocksEventListenerExtension {
+class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExtension {
 	function __construct($manifest) {
 		parent::__construct($manifest);
 	}
