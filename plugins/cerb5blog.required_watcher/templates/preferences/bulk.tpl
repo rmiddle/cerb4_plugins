@@ -5,11 +5,11 @@
 	</tr>
 </table>
 
-<form action="{devblocks_url}{/devblocks_url}" method="POST" id="frmBulkWatchers2" name="frmBulkWatchers2">
+<form action="{devblocks_url}{/devblocks_url}" method="POST" id="frmBulkWatchers" name="frmBulkWatchers">
 <input type="hidden" name="c" value="preferences">
 <input type="hidden" name="a" value="handleTabAction">
 <input type="hidden" name="tab" value="core.pref.notifications">
-<input type="hidden" name="action" value="doWatcher2BulkPanel">
+<input type="hidden" name="action" value="doWatcherBulkPanel">
 <input type="hidden" name="view_id" value="{$view_id}">
 <input type="hidden" name="ids" value="{$ids}">
 
@@ -46,6 +46,6 @@
 <br>
 </div>
 
-<button type="button" onclick="genericPanel.hide();genericAjaxPost('frmBulkWatchers2','view{$view_id}');"><img src="{devblocks_url}c=resource&p=cerberusweb.core&f=images/check.gif{/devblocks_url}" align="top"> {$translate->_('common.save_changes')|capitalize}</button>
+<button type="button" onclick="genericPanel.hide();genericAjaxPost('frmBulkWatchers','view{$view_id}');"><img src="{devblocks_url}c=resource&p=cerberusweb.core&f=images/check.gif{/devblocks_url}" align="top"> {$translate->_('common.save_changes')|capitalize}</button>
 <br>
 </form>

@@ -1,11 +1,11 @@
-<form action="{devblocks_url}{/devblocks_url}" method="post" id="frmWatcher2Filter" onsubmit="return false;">
+<form action="{devblocks_url}{/devblocks_url}" method="post" id="frmWatcherFilter" onsubmit="return false;">
 <input type="hidden" name="c" value="preferences">
 <input type="hidden" name="a" value="handleTabAction">
-<input type="hidden" name="tab" value="cerb5blog.watchers2.pref.notifications">
-<input type="hidden" name="action" value="saveWatcher2Panel">
+<input type="hidden" name="tab" value="core.pref.notifications">
+<input type="hidden" name="action" value="saveWatcherPanel">
 <input type="hidden" name="id" value="{$filter->id}">
 
-<h2>Add Watcher 2.0 Filter</h2>
+<h2>Add Watcher Filter</h2>
 
 <div style="height:400;overflow:auto;">
 <b>Filter Name:</b> (e.g. Emergency Support to SMS)<br>
@@ -13,7 +13,7 @@
 
 {if $active_worker->is_superuser}
 	{'common.worker'|devblocks_translate|capitalize}:
-	<select name="worker_id" onchange="genericAjaxGet('div_do_email','c=preferences&a=handleTabAction&tab=cerb5blog.watchers2.pref.notifications&action=getWorkerAddresses&worker_id='+selectValue(this));">
+	<select name="worker_id" onchange="genericAjaxGet('div_do_email','c=preferences&a=handleTabAction&tab=core.pref.notifications&action=getWorkerAddresses&worker_id='+selectValue(this));">
 		{foreach from=$all_workers item=worker key=worker_id}
 			<option value="{$worker_id}" {if (empty($filter->worker_id) && $worker_id==$active_worker->id) || $filter->worker_id==$worker_id}selected="selected"{/if}>{$worker->getName()}</option>
 		{/foreach}
@@ -244,6 +244,6 @@
 </div>
 <br>
 
-<button type="button" onclick="genericPanel.hide();genericAjaxPost('frmWatcher2Filter', '', '');"><img src="{devblocks_url}c=resource&p=cerberusweb.core&f=images/check.gif{/devblocks_url}" align="top"> {$translate->_('common.save_changes')}</button>
+<button type="button" onclick="genericPanel.hide();genericAjaxPost('frmWatcherFilter', '', '');"><img src="{devblocks_url}c=resource&p=cerberusweb.core&f=images/check.gif{/devblocks_url}" align="top"> {$translate->_('common.save_changes')}</button>
 </form>
 <br>

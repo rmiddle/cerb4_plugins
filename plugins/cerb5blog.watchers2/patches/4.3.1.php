@@ -24,4 +24,19 @@ if(!isset($tables['cerb5blog_watchers2_filter'])) {
 	$datadict->ExecuteSQLArray($sql);
 }
 
+// `mail_template` =======================
+if(!isset($tables['cerb5blog_watchers2_template'])) {
+	$flds = "
+		id I4 DEFAULT 0 NOTNULL PRIMARY,
+		title C(64) DEFAULT '' NOTNULL,
+		description C(255) DEFAULT '' NOTNULL,
+		template_type I1 DEFAULT 0 NOTNULL,
+		template_subject C(255) DEFAULT '' NOTNULL,
+		template_content XL,
+		owner_id I4 DEFAULT 0 NOTNULL
+	";
+	$sql = $datadict->CreateTableSQL('cerb5blog_watchers2_template',$flds);
+	$datadict->ExecuteSQLArray($sql);
+}
+
 return TRUE;

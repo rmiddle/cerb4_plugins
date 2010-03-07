@@ -9,10 +9,11 @@
 
 	<class_loader>
 		<file path="api/App.php">
-			<class name="DAO_WorkerMailFilter" />
-			<class name="Model_WorkerMailFilter" />
-			<class name="SearchFields_WorkerMailFilter" />
-			<class name="C4_WatcherView" />
+			<class name="DAO_Watcher2MailFilter" />
+			<class name="Model_Watcher2MailFilter" />
+			<class name="SearchFields_Watcher2MailFilter" />
+			<class name="C4_Watcher2View" />
+			<class name="DAO_Watcher2MailTemplate" />
 		</file>
 	</class_loader>
 	
@@ -22,7 +23,7 @@
 		
 		<extension point="devblocks.i18n.strings">
 			<id>cerb5blog.watchers2.translations</id>
-			<name>Watchers2 Strings</name>
+			<name>[Cerb5Blog] Watchers 2.0 Strings</name>
 			<class>
 				<file>api/Plugin.php</file>
 				<name>Cerb5blogWatchers2Translations</name>
@@ -35,7 +36,7 @@
 		
 		<extension point="devblocks.patch.container">
 			<id>cerb5blog.watchers2.patches</id>
-			<name>Watchers Patches</name>
+			<name>[Cerb5Blog] Watchers 2.0 Patches</name>
 			<class>
 				<file>api/Patch.php</file>
 				<name>Cerb5blogWatchers2PatchContainer</name>
@@ -47,11 +48,11 @@
 		<!-- Event Listeners -->
 		
 		<extension point="devblocks.listener.event">
-			<id>cerb5blog.listeners.watchers</id>
-			<name>Watchers2 Listener</name>
+			<id>cerb5blog.watchers2.listeners</id>
+			<name>[Cerb5Blog] Watchers 2.0 Listener</name>
 			<class>
-				<file>api/App.php</file>
-				<name>ChWatchersEventListener</name>
+				<file>api/Listeners.php</file>
+				<name>Cerb5blogWatchers2EventListener</name>
 			</class>
 			<params>
 				<!-- E-mail Event Listener -->
@@ -72,30 +73,30 @@
 		<!-- Preference Tabs  -->
 		
 		<extension point="cerberusweb.preferences.tab">
-			<id>core.pref.notifications</id>
-			<name>Watchers Preferences</name>
+			<id>cerb5blog.watchers2.pref.notifications</id>
+			<name>[Cerb5Blog] Watchers 2.0 Preferences</name>
 			<class>
 				<file>api/App.php</file>
-				<name>ChWatchersPreferences</name>
+				<name>Cerb5blogWatchers2Preferences</name>
 			</class>
 			<params>
-				<param key="uri" value="watchers" />
-				<param key="title" value="Watchers" />
+				<param key="uri" value="watchers2" />
+				<param key="title" value="Watchers 2.0" />
 			</params>
 		</extension>
 		
 		<!-- Config Tabs -->
 		
 		<extension point="cerberusweb.config.tab">
-			<id>watchers.config.tab</id>
-			<name>Watchers Tab</name>
+			<id>cerb5blog.watchers2.config.tab</id>
+			<name>[Cerb5Blog] Watchers 2.0 Tab</name>
 			<class>
 				<file>api/App.php</file>
-				<name>ChWatchersConfigTab</name>
+				<name>Cerb5blogWatchers2ConfigTab</name>
 			</class>
 			<params>
-				<param key="uri" value="watchers" />
-				<param key="title" value="Watchers" />
+				<param key="uri" value="watchers2" />
+				<param key="title" value="Watchers 2.0" />
 			</params>
 		</extension>
 	

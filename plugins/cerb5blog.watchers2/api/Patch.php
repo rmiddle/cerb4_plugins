@@ -12,7 +12,7 @@ class Cerb5blogWatchers2PatchContainer extends DevblocksPatchContainerExtension 
 
 		$file_prefix = dirname(dirname(__FILE__)) . '/patches';
 		
-		$this->registerPatch(new DevblocksPatch('cerb5blog.watchers2',5,$file_prefix.'/4.3.1.php',''));
+		$this->registerPatch(new DevblocksPatch('cerb5blog.watchers2',12,$file_prefix.'/4.3.1.php',''));
 	}
 };
 
