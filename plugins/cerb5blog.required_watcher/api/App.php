@@ -150,13 +150,6 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 		if(empty($next_worker_id))
 			return;
 
-		@$active_worker = CerberusApplication::getActiveWorker();
-    		
-		// Make sure we're not assigning work to ourselves, if so then bail
-		if(null != $active_worker && $active_worker->id == $next_worker_id) {
-			return;
-		}
-
 		$url_writer = DevblocksPlatform::getUrlService();
     	
 		$mail_service = DevblocksPlatform::getMailService();
@@ -176,7 +169,7 @@ class Cerb5blogRequiredWatchersEventListener extends DevblocksEventListenerExten
 			// (Action) Forward Email To:
 
 			// Sanitize and combine all the destination addresses
-			$next_worker = DAO_Worker::getAgent($ticket->next_worker_id);
+			$next_worker = DAO_Worker::getAgent($next_worker_id);
 			$notify_emails = $next_worker->email;
 			
 			if(empty($notify_emails))
